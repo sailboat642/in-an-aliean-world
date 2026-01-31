@@ -6,9 +6,6 @@ extends Area2D
 
 var used := false
 
-func _ready():
-	area_entered.connect(_on_area_entered)
-
 func _on_area_entered(area: Area2D):
 	if used:
 		return

@@ -2,9 +2,9 @@ extends Area2D
 
 @onready var sprite: Sprite2D = $Sprite2D
 
-func _ready():
-	area_entered.connect(_on_area_entered)
-	area_exited.connect(_on_area_exited)
+#func _ready():
+	#area_entered.connect(_on_area_entered)
+	#area_exited.connect(_on_area_exited)
 
 func _on_area_entered(area: Area2D):
 	var player = area.get_parent()
