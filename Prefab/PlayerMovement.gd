@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var speed := 200.0
-var path_follow: PathFollow2D = null
+@export var path_follow: PathFollow2D
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var camera: Camera2D = $Camera2D
@@ -27,7 +27,8 @@ func _process(delta):
 	if (Input.is_action_pressed("ui_left") and can_move):
 		path_follow.progress -= delta * speed
 		
-	if can_transform and Input.is_action_just_pressed("transform") and not can_move:
+	if can_transform and Input.is_action_just_pressed("transform"):
+		print ("Tranfrom")
 		transform_into_target()
 		unlock_movement()
 		camera.zoom_in(Vector2.ONE)
