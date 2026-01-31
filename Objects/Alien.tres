@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TransformationData" load_steps=3 format=3 uid="uid://cv8w0oerm8jc"]
+
+[ext_resource type="Script" uid="uid://bry43c5oaugi0" path="res://Scripts/TransformationData.gd" id="1_q3bf3"]
+[ext_resource type="Texture2D" uid="uid://bbya603t3e0bw" path="res://Sprites/Alien.png" id="2_vi0f0"]
+
+[resource]
+script = ExtResource("1_q3bf3")
+name = "Cat"
+sprite = ExtResource("2_vi0f0")
+type = "alien"
+metadata/_custom_type_script = "uid://bry43c5oaugi0"

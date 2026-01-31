@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TransformationData" load_steps=3 format=3 uid="uid://db0t5uvs508sb"]
+
+[ext_resource type="Script" uid="uid://bry43c5oaugi0" path="res://Scripts/TransformationData.gd" id="1_tnvwv"]
+[ext_resource type="Texture2D" uid="uid://bu0cav0gu5trq" path="res://icon.svg" id="2_cj02i"]
+
+[resource]
+script = ExtResource("1_tnvwv")
+name = "Iron"
+sprite = ExtResource("2_cj02i")
+type = "steel"
+metadata/_custom_type_script = "uid://bry43c5oaugi0"

@@ -1,30 +1,19 @@
 extends Area2D
 
-@onready var object_sprite: Sprite2D = $Sprite2D
-
-var player_in_range := false
-var player_ref: PathFollow2D
+@onready var sprite: Sprite2D = $Sprite2D
 
 func _ready():
-	body_entered.connect(_on_body_entered)
-	body_exited.connect(_on_body_exited)
+	area_entered.connect(_on_area_entered)
+	area_exited.connect(_on_area_exited)
 
-func _on_body_entered(body):
-	if body.is_in_group("player"):
-		player_in_range = true
-		player_ref = body
+func _on_area_entered(area: Area2D):
+	var player = area.get_parent()
+	if player.is_in_group("player"):
+		player.set_transform_target(sprite)
+		sprite.modulate = Color(1, 1, 0.6) # highlight
 
-func _on_body_exited(body):
-	if body == player_ref:
-		player_in_range = false
-		player_ref = null
-
-func _input_event(viewport, event, shape_idx):
-	if not player_in_range:
-		return
-	
-	if event is InputEventMouseButton and event.pressed:
-		player_ref.transform2D(
-			object_sprite.texture,
-			object_sprite.scale
-		)
+func _on_area_exited(area: Area2D):
+	var player = area.get_parent()
+	if player.is_in_group("player"):
+		player.clear_transform_target()
+		sprite.modulate = Color.WHITE
