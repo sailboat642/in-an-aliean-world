@@ -27,7 +27,7 @@ func switch_path(player: Node2D, old_pf: PathFollow2D):
 	var new_pf := PathFollow2D.new()
 	new_pf.loop = false
 	next_path.add_child(new_pf)
-
+	await get_tree().create_timer(1.0).timeout
 	new_pf.progress = 0
 	new_pf.add_child(player)
 	player.position = Vector2.ZERO

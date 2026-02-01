@@ -9,29 +9,24 @@ var path_follow: PathFollow2D = null
 var original_texture: Texture2D
 var original_scale: Vector2
 
+var base_texture_size: Vector2
+var base_scale: Vector2
+var base_offset: Vector2
+
 var can_transform := false
 var target_sprite: Sprite2D = null
 
 var can_move := true
 
 # Pre-filled transformations
-var transformations = [
-	{
-		"name": "Alien",
-		"texture": preload("res://Sprites/Alien.png"),
-		"scale": Vector2(0.5, 0.5)
-	},
-	{
-		"name": "Steel",
-		"texture": preload("res://Sprites/Branch.png"),
-		"scale": Vector2(1.2, 1.2)
-	},
-	{
-		"name": "Moving",
-		"texture": preload("res://Sprites/Tree.png"),
-		"scale": Vector2(1.5, 1.5)
-	}
+#@onready var player_sprite: Sprite2D = $Sprite2D
+@onready var slots := [
+	$SlotLibrary/Slot_Alien,
+	$SlotLibrary/Slot_Steel,
+	$SlotLibrary/Slot_Random
 ]
+
+var current_slot := -1
 
 var current_index := 0
 
@@ -56,18 +51,23 @@ func _process(delta):
 	if Input.is_action_just_pressed("revert"):
 		revert()	
 		
-	if Input.is_action_just_pressed("slot_1"):
-		apply_transformation(0)
-	elif Input.is_action_just_pressed("slot_2"):
-		apply_transformation(1)
-	elif Input.is_action_just_pressed("slot_3"):
-		apply_transformation(2)
+	if Input.is_action_pressed("slot_1"):
+		transform_to_slot(0)
+
+	elif Input.is_action_pressed("slot_2"):
+		transform_to_slot(1)
+
+	elif Input.is_action_pressed("slot_3"):
+		transform_to_slot(2)
 	elif Input.is_action_just_pressed("slot_0"):
 		reset_to_original()
 		
 func _ready():
 	original_texture = sprite.texture
 	original_scale = self.scale
+	base_texture_size = sprite.texture.get_size()
+	base_scale = sprite.scale
+	base_offset = sprite.offset
 
 func set_transform_target(obj_sprite: Sprite2D):
 	can_transform = true
@@ -96,13 +96,34 @@ func unlock_movement():
 	can_move = true
 	print("Player unlocked")
 	
-func apply_transformation(index: int):
-	current_index = index
-	sprite.texture = transformations[index]["texture"]
-	self.scale = transformations[index]["scale"]
-	print("Transformed into", transformations[index]["name"])
+func transform_to_slot(slot_index: int):
+	if slot_index < 0 or slot_index >= slots.size():
+		return
+
+	var slot_sprite: Sprite2D = slots[slot_index]
+	
+	# RESET FIRST (THIS IS THE KEY)
+	sprite.scale = base_scale
+	sprite.offset = base_offset
+
+	sprite.texture = slot_sprite.texture
+	sprite.offset = slot_sprite.offset
+	sprite.scale = slot_sprite.scale
+	sprite.rotation = slot_sprite.rotation
+	sprite.flip_h = slot_sprite.flip_h
+	sprite.flip_v = slot_sprite.flip_v
+	sprite.centered = slot_sprite.centered
+	
+	# ---- SIZE MATCHING PART ----
+	var new_size = slot_sprite.texture.get_size()
+
+	var scale_x = (base_texture_size.x * base_scale.x) / new_size.x
+	var scale_y = (base_texture_size.y * base_scale.y) / new_size.y
+
+	sprite.scale = Vector2(scale_x, scale_y)
 	
 func reset_to_original():
 	sprite.texture = original_texture
 	self.scale = original_scale
+	sprite.offset = base_offset
 	print("Returned to original form")

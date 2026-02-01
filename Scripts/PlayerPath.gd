@@ -53,6 +53,7 @@ func transform_into_target():
 	
 	sprite.texture = target_sprite.texture
 	sprite.scale = target_sprite.scale
+	sprite.offset = Vector2(0, -100)
 
 func revert():
 	sprite.texture = original_texture
