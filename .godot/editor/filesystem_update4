@@ -1,0 +1,10 @@
+res://LivingThings/Tribals/alien.gd
+res://Audio/Scripts/audio_manager.gd
+res://LivingThings/Tribals/triangle_alien.tscn
+res://LivingThings/Tribals/square_alien.tscn
+res://Levels/StartScene/start_scene.gd
+res://Level.gd
+res://LivingThings/Tribals/circle_alien.tscn
+res://Levels/TitleScene/title.gd
+res://Player/player.tscn
+res://Player/PlayerMovement.gd

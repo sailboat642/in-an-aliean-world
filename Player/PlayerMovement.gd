@@ -36,6 +36,10 @@ func _process(delta):
 		#unlock_movement()
 		camera.zoom_in(Vector2.ONE)
 		
+	if Input.is_action_pressed("revert"):
+		player_graphics.alarm()
+		
+		
 	if not Input.is_anything_pressed():
 		player_graphics.idle()
 
