@@ -11,7 +11,6 @@ config_version=5
 [application]
 
 config/name="InAnAlienWorld"
-run/main_scene="uid://cosn3j8cghaxi"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://Art/icon.svg"
 
