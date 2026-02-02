@@ -1,12 +1,14 @@
 extends Node
 
 # CONFIG
-const SFX_POOL_SIZE := 6  # how many simultaneous non-positional sfx voices to preallocate
-const SFX_2D_POOL_SIZE := 6
+const SFX_POOL_SIZE := 8 # how many simultaneous non-positional sfx voices to preallocate
+const SFX_2D_POOL_SIZE := 8
+const ENV_POOL_SIZE := 2  # how many simultaneous environment sounds to preallocate
 
 # asp pools
 var sfx_pool: Array[AudioStreamPlayer] = []
 var sfx_2d_pool: Array[AudioStreamPlayer2D] = []
+var env_pool: Array[AudioStreamPlayer] = []
 
 
 # Dictionary to hold preloaded sounds for easy access
@@ -21,15 +23,26 @@ var sounds = {
 	"sfx_fs_square_02": preload("res://Audio/Assets/Sfx/sfx_fs_square_02.wav"),
 	"sfx_fs_square_03": preload("res://Audio/Assets/Sfx/sfx_fs_square_03.wav"),
 	"sfx_fs_square_04": preload("res://Audio/Assets/Sfx/sfx_fs_square_04.wav"),
+	#"sfx_fs_square_05": preload("res://Audio/Assets/Sfx/sfx_fs_square_05.wav"),
+	#"sfx_fs_square_06": preload("res://Audio/Assets/Sfx/sfx_fs_square_06.wav"),
+	#"sfx_fs_square_07": preload("res://Audio/Assets/Sfx/sfx_fs_square_07.wav"),
+	#"sfx_fs_square_08": preload("res://Audio/Assets/Sfx/sfx_fs_square_08.wav"),
 	"sfx_fs_triangle_01": preload("res://Audio/Assets/Sfx/sfx_fs_triangle_01.wav"),
 	"sfx_fs_triangle_02": preload("res://Audio/Assets/Sfx/sfx_fs_triangle_02.wav"),
 	"sfx_fs_triangle_03": preload("res://Audio/Assets/Sfx/sfx_fs_triangle_03.wav"),
 	"sfx_fs_triangle_04": preload("res://Audio/Assets/Sfx/sfx_fs_triangle_04.wav"),
+	#"sfx_fs_triangle_05": preload("res://Audio/Assets/Sfx/sfx_fs_triangle_05.wav"),
+	#"sfx_fs_triangle_06": preload("res://Audio/Assets/Sfx/sfx_fs_triangle_06.wav"),
+	#"sfx_fs_triangle_07": preload("res://Audio/Assets/Sfx/sfx_fs_triangle_07.wav"),
+	#"sfx_fs_triangle_08": preload("res://Audio/Assets/Sfx/sfx_fs_triangle_08.wav"),
 	"sfx_hide_01": preload("res://Audio/Assets/Sfx/sfx_hide_01.wav"),
 	"sfx_hide_02": preload("res://Audio/Assets/Sfx/sfx_hide_02.wav"),
 	"sfx_transform": preload("res://Audio/Assets/Sfx/sfx_transform.wav"),
 	"sfx_ui_click": preload("res://Audio/Assets/Sfx/sfx_ui_click.wav"),
 	"sfx_ui_hover": preload("res://Audio/Assets/Sfx/sfx_ui_hover.wav"),
+	#"sfx_circle_alarm": preload("res://Audio/Assets/Sfx/sfx_circle_alarm.wav"),
+	#"sfx_square_alarm": preload("res://Audio/Assets/Sfx/sfx_square_alarm.wav"),
+	#"sfx_triangle_alarm": preload("res://Audio/Assets/Sfx/sfx_triangle_alarm.wav"),
 	"mx_menu": preload("res://Audio/Assets/Music/mx_menu.wav"),
 	"mx_gameplay": preload("res://Audio/Assets/Music/mx_gameplay.wav"),
 	"mx_tutorial": preload("res://Audio/Assets/Music/mx_tutorial.wav"),
@@ -40,21 +53,28 @@ var sounds = {
 func _ready():
 	# Music
 	add_child(music_player)
-	music_player.bus = "Music"
+	music_player.bus = "BUS_MUSIC"
 
 	# Non-positional SFX pool (UI / global)
 	for i in SFX_POOL_SIZE:
 		var p := AudioStreamPlayer.new()
-		p.bus = "UI"
+		p.bus = "BUS_SFX"
 		add_child(p)
 		sfx_pool.append(p)
 
 	# Positional SFX pool (world sounds)
 	for i in SFX_2D_POOL_SIZE:
 		var p2 := AudioStreamPlayer2D.new()
-		p2.bus = "SFX"
+		p2.bus = "BUS_SFX"
 		add_child(p2)
 		sfx_2d_pool.append(p2)
+	
+	# Environment sound pool
+	for i in ENV_POOL_SIZE:
+		var p3 := AudioStreamPlayer.new()
+		p3.bus = "BUS_ENV"
+		add_child(p3)
+		env_pool.append(p3)
 		
 		
 func _get_free_sfx_player() -> AudioStreamPlayer:
@@ -70,17 +90,35 @@ func _get_free_sfx_2d_player() -> AudioStreamPlayer2D:
 			return p
 	return sfx_2d_pool[0]
 
+
+func _get_free_env_player() -> AudioStreamPlayer:
+	for p in env_pool:
+		if not p.playing:
+			return p
+	return env_pool[0] # voice stealing fallback
+
+
+func set_bus(player: Node, bus_name: String) -> void:
+	if player == null:
+		return
+	
+	if player is AudioStreamPlayer or player is AudioStreamPlayer2D:
+		player.bus = bus_name
 	
 	
-	
-func play_music(song_name: String):
+func play_music(song_name: String, volume_db: float = 0.0):
+	if not sounds.has(song_name):
+		return
 	
 	var track = sounds[song_name]
-	if track == null: return
+	if track == null: 
+		return
 	
 	if music_player.stream == track and music_player.playing:
 		return # Don't restart if the same track is already playing
 	
+	music_player.bus = "BUS_MUSIC"
+	music_player.volume_db = volume_db
 	music_player.stream = track
 	music_player.play()
 
@@ -98,6 +136,7 @@ func play_sfx(
 
 	if position == Vector2.ZERO:
 		var p := _get_free_sfx_player()
+		p.bus = "BUS_SFX"
 		p.stream = stream
 		p.pitch_scale = pitch
 		p.volume_db = volume_db
@@ -105,6 +144,7 @@ func play_sfx(
 		return p
 	else:
 		var p2 := _get_free_sfx_2d_player()
+		p2.bus = "BUS_SFX"
 		p2.stream = stream
 		p2.pitch_scale = pitch
 		p2.volume_db = volume_db
@@ -119,7 +159,27 @@ func play_random(names: Array,
 	):
 		
 	var soundName = names.pick_random()
-	play_sfx(soundName,volume_db,pitch_range, position)
+	play_sfx(soundName, volume_db, pitch_range, position)
+
+
+func play_env(
+	sound_name: String,
+	volume_db: float = 0.0,
+	pitch_range: Vector2 = Vector2(1, 1)
+):
+	if not sounds.has(sound_name):
+		return null
+
+	var stream: AudioStream = sounds[sound_name]
+	var pitch := randf_range(pitch_range.x, pitch_range.y)
+	
+	var p := _get_free_env_player()
+	p.bus = "BUS_ENV"
+	p.stream = stream
+	p.pitch_scale = pitch
+	p.volume_db = volume_db
+	p.play()
+	return p
 
 func stop_all_sfx() -> void:
 	for p in sfx_pool:
@@ -136,12 +196,12 @@ func stop_all_audio() -> void:
 	stop_music()
 	stop_all_sfx()
 
-func set_loop(player: Node, enable: bool) -> void:
-	if player == null:
-		return
-
-	if player is AudioStreamPlayer or player is AudioStreamPlayer2D:
-		player.loop = enable
+#func set_loop(player: Node, enable: bool) -> void:
+	#if player == null:
+		#return
+#
+	#if player is AudioStreamPlayer or player is AudioStreamPlayer2D:
+		#player.loop = enable
 
 
 		
