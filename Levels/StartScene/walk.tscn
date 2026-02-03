@@ -1,18 +1,18 @@
 [gd_scene load_steps=18 format=3 uid="uid://18u6x2vg1ue5"]
 
-[ext_resource type="Script" uid="uid://bbjk4kb4maw6v" path="res://Level.gd" id="1_jws6r"]
+[ext_resource type="Script" uid="uid://n1ywwghroli5" path="res://Levels/StartScene/start_scene.gd" id="1_ionnw"]
 [ext_resource type="PackedScene" uid="uid://cp7uwqqdciu45" path="res://Player/player.tscn" id="2_qycdm"]
 [ext_resource type="Texture2D" uid="uid://cwv6t7x2473so" path="res://Art/TitleBackground.png" id="3_epvrj"]
 [ext_resource type="Texture2D" uid="uid://4mda3mehcubd" path="res://Art/Ground.png" id="3_jws6r"]
 [ext_resource type="Texture2D" uid="uid://cojem66fnmgll" path="res://Art/Hill.png" id="4_7q3oc"]
 [ext_resource type="Texture2D" uid="uid://22ufhor6ob1p" path="res://Art/SpaceShip.png" id="4_pakya"]
-[ext_resource type="PackedScene" uid="uid://flkofmteg2ii" path="res://LivingThings/Tribals/circle_alien.tscn" id="5_7q3oc"]
-[ext_resource type="PackedScene" uid="uid://b4al8bexv0lok" path="res://LivingThings/Tribals/square_alien.tscn" id="6_f4nto"]
 [ext_resource type="Texture2D" uid="uid://lxagvgpo7spj" path="res://Art/TreeHouse_SpriteAtlas.png" id="7_caip6"]
-[ext_resource type="Texture2D" uid="uid://bjp7d1hjb0tt0" path="res://Art/Alien_Predator.png" id="8_m2t54"]
-[ext_resource type="Texture2D" uid="uid://c41cktr47ncc7" path="res://Art/SquareAlien.png" id="9_caip6"]
 [ext_resource type="Texture2D" uid="uid://b2q01m3tsql7v" path="res://Art/BushesAndTrees.png" id="9_ionnw"]
+[ext_resource type="PackedScene" uid="uid://cj15uy4hgm5u6" path="res://LivingThings/Tribals/Fresh/triangle_alien.tscn" id="9_o0j25"]
+[ext_resource type="PackedScene" uid="uid://bkahutq8mqldb" path="res://LivingThings/Tribals/Fresh/circle_alien.tscn" id="10_ygvuh"]
 [ext_resource type="PackedScene" uid="uid://dmaxqjvvmojbq" path="res://Environment/tree.tscn" id="10_yxaaj"]
+[ext_resource type="PackedScene" uid="uid://b5dykyrblsnr2" path="res://LivingThings/Animals/alien_prey.tscn" id="12_ionnw"]
+[ext_resource type="PackedScene" uid="uid://bckm3b1ax1mx2" path="res://UtilityPrefab/PathSwitchGate/portal.tscn" id="13_m2t54"]
 [ext_resource type="PackedScene" uid="uid://bdpgbcfhdvg32" path="res://UtilityPrefab/PauseMenu/pause_menu.tscn" id="14_ionnw"]
 
 [sub_resource type="Curve2D" id="Curve2D_epvrj"]
@@ -29,16 +29,19 @@ point_count = 4
 
 [sub_resource type="Curve2D" id="Curve2D_jws6r"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 27, 10434, 0, 0, 0, 0, 1965, 10763, 0, 0, 0, 0, 3170, 10865, 0, 0, 0, 0, 5751, 11357, 0, 0, 0, 0, 7736, 11495, 0, 0, 0, 0, 22144, 11498)
+"points": PackedVector2Array(0, 0, 0, 0, 27, 10434, 0, 0, 0, 0, 1965, 10763, 0, 0, 0, 0, 3170, 10865, 0, 0, 0, 0, 5198, 11280, 0, 0, 0, 0, 5609, 11502, 0, 0, 0, 0, 7736, 11495, 0, 0, 0, 0, 22144, 11498)
 }
-point_count = 6
+point_count = 7
 
 [node name="Walk" type="Node2D"]
-script = ExtResource("1_jws6r")
+script = ExtResource("1_ionnw")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 29875.555
-offset_bottom = 16805.0
+modulate = Color(0.796243, 0.796243, 0.796243, 0.6745098)
+offset_left = -115.0
+offset_top = 159.0
+offset_right = 29760.555
+offset_bottom = 16964.0
 scale = Vector2(0.7417417, 0.7417417)
 texture = ExtResource("3_epvrj")
 
@@ -84,55 +87,25 @@ position = Vector2(11304.193, 348.42426)
 scale = Vector2(1.320934, 1.320934)
 texture = ExtResource("3_jws6r")
 
-[node name="PlaceHolders" type="Node2D" parent="."]
+[node name="House" type="Node2D" parent="Terrain"]
+position = Vector2(10847.926, -2510.0527)
+scale = Vector2(0.905503, 0.905503)
 
-[node name="SquareAlien" type="Sprite2D" parent="PlaceHolders"]
-position = Vector2(14242, 11491)
-texture = ExtResource("9_caip6")
-
-[node name="SquareAlien2" type="Sprite2D" parent="PlaceHolders"]
-position = Vector2(15408, 11728)
-texture = ExtResource("9_caip6")
-
-[node name="SquareAlien3" type="Sprite2D" parent="PlaceHolders"]
-position = Vector2(15834, 11603)
-texture = ExtResource("9_caip6")
-
-[node name="House" type="Node2D" parent="PlaceHolders"]
-position = Vector2(19952, 8738)
-
-[node name="Polygon2D" type="Polygon2D" parent="PlaceHolders/House"]
+[node name="Polygon2D" type="Polygon2D" parent="Terrain/House"]
 scale = Vector2(2.8863292, 2.8863292)
 texture = ExtResource("7_caip6")
 polygon = PackedVector2Array(-67.506775, 753.57874, 203.9729, 274.82062, 768.9441, 276.65497, 979.8911, 764.5846, 673.5593, 1193.816, 163.6178, 1168.1355)
 uv = PackedVector2Array(-67.506775, 753.57874, 203.9729, 274.82062, 768.9441, 276.65497, 979.8911, 764.5846, 673.5593, 1193.816, 163.6178, 1168.1355)
 
-[node name="House2" type="Node2D" parent="PlaceHolders"]
-position = Vector2(18163, 8827)
+[node name="House2" type="Node2D" parent="Terrain"]
+position = Vector2(9227.98, -2429.463)
+scale = Vector2(0.905503, 0.905503)
 
-[node name="Polygon2D" type="Polygon2D" parent="PlaceHolders/House2"]
+[node name="Polygon2D" type="Polygon2D" parent="Terrain/House2"]
 scale = Vector2(2.8863292, 2.8863292)
 texture = ExtResource("7_caip6")
 polygon = PackedVector2Array(-67.506775, 753.57874, 203.9729, 274.82062, 768.9441, 276.65497, 979.8911, 764.5846, 673.5593, 1193.816, 163.6178, 1168.1355)
 uv = PackedVector2Array(-67.506775, 753.57874, 203.9729, 274.82062, 768.9441, 276.65497, 979.8911, 764.5846, 673.5593, 1193.816, 163.6178, 1168.1355)
-
-[node name="AlienPredator" type="Sprite2D" parent="PlaceHolders"]
-position = Vector2(10813, 11227)
-texture = ExtResource("8_m2t54")
-
-[node name="Sqaure Bush" type="Polygon2D" parent="PlaceHolders"]
-position = Vector2(5156, 9691)
-scale = Vector2(1.8367916, 1.2760023)
-texture = ExtResource("9_ionnw")
-polygon = PackedVector2Array(1268.0895, 1522.4045, 1268.0895, 1055.3783, 1856.5426, 1062.8507, 1856.5426, 1598.9968, 1268.0895, 1608.3374)
-uv = PackedVector2Array(1268.0895, 1522.4045, 1268.0895, 1055.3783, 1856.5426, 1062.8507, 1856.5426, 1598.9968, 1268.0895, 1608.3374)
-
-[node name="TriangleBush" type="Polygon2D" parent="PlaceHolders"]
-position = Vector2(7661, 9693)
-scale = Vector2(1.2812357, 1.2812357)
-texture = ExtResource("9_ionnw")
-polygon = PackedVector2Array(458.4118, 1546.1946, 835.02545, 932.2758, 1218.3644, 1588.4675, 454.5688, 1583.6638, 452.6473, 1556.7627)
-uv = PackedVector2Array(458.4118, 1546.1946, 835.02545, 932.2758, 1218.3644, 1588.4675, 454.5688, 1583.6638, 452.6473, 1556.7627)
 
 [node name="Paths" type="Node2D" parent="."]
 
@@ -145,30 +118,90 @@ position = Vector2(-1351.0001, -486.99976)
 scale = Vector2(5.713673, 5.713673)
 texture = ExtResource("4_pakya")
 
+[node name="PlayerPathFollow" type="PathFollow2D" parent="Paths/HillPath"]
+position = Vector2(-2407, -32)
+rotation = -0.0008186654
+scale = Vector2(0.99999994, 0.99999994)
+rotates = false
+loop = false
+
+[node name="Player" parent="Paths/HillPath/PlayerPathFollow" node_paths=PackedStringArray("path_follow") instance=ExtResource("2_qycdm")]
+rotation = -0.098209776
+speed = 1000.0
+path_follow = NodePath("..")
+
+[node name="Portal" parent="Paths/HillPath" node_paths=PackedStringArray("current_path", "next_path") instance=ExtResource("13_m2t54")]
+position = Vector2(2401, -45)
+scale = Vector2(4.000001, 4.000001)
+current_path = NodePath("../PlayerPathFollow")
+next_path = NodePath("../../HillPath2/PlayerPathFollow")
+
 [node name="HillPath2" type="Path2D" parent="Paths"]
 curve = SubResource("Curve2D_f4nto")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Paths/HillPath2"]
+[node name="Portal2" parent="Paths/HillPath2" node_paths=PackedStringArray("current_path", "next_path") instance=ExtResource("13_m2t54")]
+position = Vector2(5149, 8730.999)
+scale = Vector2(4.0000005, 4.0000005)
+current_path = NodePath("../PlayerPathFollow")
+next_path = NodePath("../../GroundPath/PlayerPathFollow")
+
+[node name="PlayerPathFollow" type="PathFollow2D" parent="Paths/HillPath2"]
 position = Vector2(15, 7815)
 rotation = 0.07856017
-scale = Vector2(0.99999994, 0.99999994)
-
-[node name="Player" parent="Paths/HillPath2/PathFollow2D" node_paths=PackedStringArray("path_follow") instance=ExtResource("2_qycdm")]
-position = Vector2(0.002, 30)
-speed = 500.0
-path_follow = NodePath("..")
-
-[node name="SquareAlien" parent="Paths/HillPath2" instance=ExtResource("5_7q3oc")]
-position = Vector2(3847, 8574)
+rotates = false
+loop = false
 
 [node name="GroundPath" type="Path2D" parent="Paths"]
 curve = SubResource("Curve2D_jws6r")
 
-[node name="SquareAlien" parent="Paths/GroundPath" instance=ExtResource("6_f4nto")]
-position = Vector2(14651, 11489)
+[node name="PlayerPathFollow" type="PathFollow2D" parent="Paths/GroundPath"]
+position = Vector2(27, 10434)
+rotation = 0.16815947
+rotates = false
+loop = false
+
+[node name="PlaceHolders" type="Node2D" parent="."]
+
+[node name="Sqaure Bush" type="Polygon2D" parent="PlaceHolders"]
+position = Vector2(2776.7842, 9547)
+scale = Vector2(1.8367916, 1.2760023)
+texture = ExtResource("9_ionnw")
+polygon = PackedVector2Array(1268.0895, 1522.4045, 1268.0895, 1055.3783, 1856.5426, 1062.8507, 1856.5426, 1598.9968, 1268.0895, 1608.3374)
+uv = PackedVector2Array(1268.0895, 1522.4045, 1268.0895, 1055.3783, 1856.5426, 1062.8507, 1856.5426, 1598.9968, 1268.0895, 1608.3374)
+
+[node name="TriangleBush" type="Polygon2D" parent="PlaceHolders"]
+position = Vector2(5281.784, 9549)
+scale = Vector2(1.2812357, 1.2812357)
+texture = ExtResource("9_ionnw")
+polygon = PackedVector2Array(458.4118, 1546.1946, 835.02545, 932.2758, 1218.3644, 1588.4675, 454.5688, 1583.6638, 452.6473, 1556.7627)
+uv = PackedVector2Array(458.4118, 1546.1946, 835.02545, 932.2758, 1218.3644, 1588.4675, 454.5688, 1583.6638, 452.6473, 1556.7627)
+
+[node name="TriangleAlien" parent="PlaceHolders" instance=ExtResource("9_o0j25")]
+position = Vector2(15380, 11780)
+
+[node name="CircleAlien" parent="PlaceHolders" instance=ExtResource("10_ygvuh")]
+position = Vector2(14640, 11666)
+
+[node name="AlienPrey" parent="PlaceHolders" instance=ExtResource("12_ionnw")]
+position = Vector2(7811, 11508)
+
+[node name="CircleAlien2" parent="PlaceHolders" instance=ExtResource("10_ygvuh")]
+position = Vector2(12616, 11585)
+
+[node name="TriangleAlien2" parent="PlaceHolders" instance=ExtResource("9_o0j25")]
+position = Vector2(10756, 11815)
+
+[node name="TriangleAlien3" parent="PlaceHolders" instance=ExtResource("9_o0j25")]
+position = Vector2(4367, 11541)
+
+[node name="TriangleAlien4" parent="PlaceHolders" instance=ExtResource("9_o0j25")]
+position = Vector2(4367, 8989)
+
+[node name="CircleAlien3" parent="PlaceHolders" instance=ExtResource("10_ygvuh")]
+position = Vector2(2651, 8989)
 
 [node name="GraphicsFront" type="Node2D" parent="."]
 
 [node name="PauseMenu" parent="." instance=ExtResource("14_ionnw")]
 
-[editable path="Paths/HillPath2/PathFollow2D/Player"]
+[node name="Gates" type="Node2D" parent="."]

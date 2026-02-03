@@ -1,3 +1,27 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:94a34334772b5760a569df624c6bc634e2b5d4ac9483d087903bad74241762b8
-size 1023
+[gd_scene load_steps=5 format=3 uid="uid://cp7uwqqdciu45"]
+
+[ext_resource type="Script" uid="uid://dc7xv3cemi7wv" path="res://Player/PlayerMovement.gd" id="1_4ntmi"]
+[ext_resource type="PackedScene" uid="uid://bdpgbcfhdvg32" path="res://UtilityPrefab/PauseMenu/pause_menu.tscn" id="3_btcbx"]
+[ext_resource type="PackedScene" uid="uid://s0mpnhxk6p8y" path="res://Player/player_graphics.tscn" id="3_gwnis"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_btcbx"]
+radius = 48.891304
+height = 266.2514
+
+[node name="Player" type="Area2D" groups=["player"]]
+collision_mask = 0
+script = ExtResource("1_4ntmi")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, -1200)
+zoom = Vector2(0.3, 0.3)
+
+[node name="PauseMenu" parent="Camera2D" instance=ExtResource("3_btcbx")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -209.99997)
+scale = Vector2(1.6976433, 1.6976433)
+shape = SubResource("CapsuleShape2D_btcbx")
+
+[node name="PlayerGraphics" parent="." instance=ExtResource("3_gwnis")]
+position = Vector2(15, 0)

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5dykyrblsnr2"]
+
+[ext_resource type="Texture2D" uid="uid://cmi88lafv8eg" path="res://Art/Alien_Domestic.png" id="1_6e3rs"]
+
+[node name="AlienPrey" type="Node2D"]
+
+[node name="Graphics" type="Sprite2D" parent="."]
+position = Vector2(54.000008, -179)
+scale = Vector2(0.3525143, 0.3525143)
+texture = ExtResource("1_6e3rs")

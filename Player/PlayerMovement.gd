@@ -3,7 +3,7 @@ extends Node2D
 @export var speed := 200.0
 @export var path_follow: PathFollow2D = null
 
-@onready var player_graphics = $Alien 
+@onready var player_graphics = $PlayerGraphics
 @onready var camera: Camera2D = $Camera2D
 
 var original_texture: Texture2D
@@ -23,11 +23,12 @@ func _process(delta):
 		return
 
 	if (Input.is_action_pressed("move_right") and can_move):
-		
+		player_graphics.scale.x = abs(scale.x)
 		player_graphics.walk()
 		
 		path_follow.progress += delta * speed
 	if (Input.is_action_pressed("move_left") and can_move):
+		player_graphics.scale.x = -abs(scale.x)
 		player_graphics.walk()
 		path_follow.progress -= delta * speed
 		
