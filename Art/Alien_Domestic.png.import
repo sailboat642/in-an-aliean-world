@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cmi88lafv8eg"
-path="res://.godot/imported/Alien_Domestic.png-33d495065d6d2cb4d8fe487aeff8c7c1.ctex"
+path="res://.godot/imported/Alien_Domestic.png-685402f7b6c2957dff4b9fb77a963858.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Alien_Domestic.png"
-dest_files=["res://.godot/imported/Alien_Domestic.png-33d495065d6d2cb4d8fe487aeff8c7c1.ctex"]
+source_file="res://Art/Alien_Domestic.png"
+dest_files=["res://.godot/imported/Alien_Domestic.png-685402f7b6c2957dff4b9fb77a963858.ctex"]
 
 [params]
 

@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:432f391e4873bf4c46c4fcdac2eaacdbc9d1da161022fb94fde6514618c39e9c
-size 734
+[gd_scene load_steps=3 format=3 uid="uid://dq0vt57jrhwdv"]
+
+[ext_resource type="Texture2D" uid="uid://c41cktr47ncc7" path="res://Art/SquareAlien.png" id="2_i7j0b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wijg2"]
+radius = 156.62694
+
+[node name="Alien" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = -1
+position = Vector2(0, -54)
+shape = SubResource("CircleShape2D_wijg2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(23, -53)
+scale = Vector2(0.13966942, 0.14808153)
+texture = ExtResource("2_i7j0b")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
