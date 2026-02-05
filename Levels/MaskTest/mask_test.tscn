@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://eyrv3jvw153w"]
+
+[ext_resource type="Texture2D" uid="uid://cwwqbhigw3s6w" path="res://Art/Background.png" id="1_nihca"]
+[ext_resource type="Texture2D" uid="uid://4mda3mehcubd" path="res://Art/Ground.png" id="2_slmhy"]
+[ext_resource type="PackedScene" uid="uid://cp7uwqqdciu45" path="res://Player/player.tscn" id="3_jr7n8"]
+[ext_resource type="PackedScene" uid="uid://bkahutq8mqldb" path="res://LivingThings/Tribals/Fresh/circle_alien.tscn" id="4_jr7n8"]
+[ext_resource type="PackedScene" uid="uid://cj15uy4hgm5u6" path="res://LivingThings/Tribals/Fresh/triangle_alien.tscn" id="5_84vcm"]
+
+[sub_resource type="Curve2D" id="Curve2D_84vcm"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 4661, 0, 0, 0, 0, 14557, 4656)
+}
+point_count = 2
+
+[node name="MaskTest" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 9423.0
+offset_bottom = 5300.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_nihca")
+
+[node name="Terrain" type="Node2D" parent="."]
+
+[node name="Ground" type="Sprite2D" parent="Terrain"]
+position = Vector2(2449.0002, 4992.0005)
+scale = Vector2(1.2743787, 1.2743785)
+texture = ExtResource("2_slmhy")
+
+[node name="Ground2" type="Sprite2D" parent="Terrain"]
+position = Vector2(7256, 4992)
+scale = Vector2(1.2743787, 1.2743785)
+texture = ExtResource("2_slmhy")
+
+[node name="Ground3" type="Sprite2D" parent="Terrain"]
+position = Vector2(12126, 4992)
+scale = Vector2(1.2743787, 1.2743785)
+texture = ExtResource("2_slmhy")
+
+[node name="Paths" type="Node2D" parent="."]
+
+[node name="Path2D" type="Path2D" parent="Paths"]
+curve = SubResource("Curve2D_84vcm")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Paths/Path2D"]
+position = Vector2(0, 4661)
+rotates = false
+loop = false
+
+[node name="Player" parent="Paths/Path2D/PathFollow2D" node_paths=PackedStringArray("path_follow") instance=ExtResource("3_jr7n8")]
+position = Vector2(675, -1)
+speed = 800.0
+path_follow = NodePath("..")
+
+[node name="PathFollow2D2" type="PathFollow2D" parent="Paths/Path2D"]
+position = Vector2(0, 4661)
+rotation = -0.00034347735
+
+[node name="CircleAlien" parent="." instance=ExtResource("4_jr7n8")]
+position = Vector2(4006, 4660)
+
+[node name="TriangleAlien" parent="." instance=ExtResource("5_84vcm")]
+position = Vector2(6232, 4670)

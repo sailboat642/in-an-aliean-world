@@ -1,3 +1,14 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7e649eb43f0132fb6ebe031896da05f20a6d8df424bfe57004d1ccb3508ff0fa
-size 529
+[gd_scene load_steps=3 format=3 uid="uid://chkpt1ydvo0g1"]
+
+[ext_resource type="Script" uid="uid://6uf0qt6pvl0c" path="res://UtilityPrefab/ExitGate/exit_gate.gd" id="1_he2k2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hj6h4"]
+size = Vector2(56, 122)
+
+[node name="ExitGate" type="Area2D"]
+script = ExtResource("1_he2k2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hj6h4")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

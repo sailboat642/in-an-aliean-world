@@ -1,0 +1,157 @@
+[gd_scene load_steps=10 format=3 uid="uid://mukv4iusye5"]
+
+[ext_resource type="Script" uid="uid://4d605jmwo8a0" path="res://Player/mask.gd" id="1_c1l40"]
+[ext_resource type="Texture2D" uid="uid://ohkoibf1q143" path="res://Art/Player Sprite Atlas.png" id="2_16w8d"]
+[ext_resource type="Texture2D" uid="uid://b0mjs4dp0thaf" path="res://Art/mask_textures/triangleanimal_icon.tres" id="3_siddx"]
+[ext_resource type="Texture2D" uid="uid://cfuo7px6gfijx" path="res://Art/mask_textures/squareform_icon.tres" id="4_d6vme"]
+[ext_resource type="Texture2D" uid="uid://bmpax1ksn6yag" path="res://Art/mask_textures/circleform_icon.tres" id="5_bd3mi"]
+[ext_resource type="Texture2D" uid="uid://dkdn3qy37phpp" path="res://Art/mask_textures/mask_basic.tres" id="6_w7xgh"]
+[ext_resource type="Texture2D" uid="uid://df2mu7u2qx11d" path="res://Art/mask_textures/charge_basic.tres" id="7_lbpgf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_btcbx"]
+size = Vector2(20, 9.862053)
+
+[sub_resource type="LabelSettings" id="LabelSettings_c1l40"]
+font_size = 24
+
+[node name="Mask" type="Node2D" node_paths=PackedStringArray("detection_area")]
+script = ExtResource("1_c1l40")
+detection_area = NodePath("Area2D")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -220.47394)
+scale = Vector2(164.56363, 164.56363)
+shape = SubResource("RectangleShape2D_btcbx")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(-267.00003, -465)
+scale = Vector2(0.34100097, 0.34100097)
+texture = ExtResource("2_16w8d")
+polygon = PackedVector2Array(707.9149, 417.56302, 706.7049, 231.22299, 824.07495, 121.11299, 926.9249, 222.75299, 922.08484, 424.823, 819.23486, 493.793)
+uv = PackedVector2Array(707.9149, 417.56302, 706.7049, 231.22299, 824.07495, 121.11299, 926.9249, 222.75299, 922.08484, 424.823, 819.23486, 493.793)
+
+[node name="MaskUI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="MaskUI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DetectionUI" type="Control" parent="MaskUI/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -325.0
+offset_top = 59.0
+offset_right = -82.0
+offset_bottom = 587.0
+grow_horizontal = 0
+
+[node name="ColorRect" type="ColorRect" parent="MaskUI/Control/DetectionUI"]
+modulate = Color(1, 1, 1, 0.59607846)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.53333336, 0.37254903, 0.4392157, 1)
+
+[node name="Vbox" type="VBoxContainer" parent="MaskUI/Control/DetectionUI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -111.0
+offset_right = 111.0
+offset_bottom = 166.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="MaskUI/Control/DetectionUI/Vbox"]
+layout_mode = 2
+text = "Lifeforms Detected"
+label_settings = SubResource("LabelSettings_c1l40")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MaskUI/Control/DetectionUI/Vbox"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MaskUI/Control/DetectionUI/Vbox/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3_siddx")
+
+[node name="TextureRect2" type="TextureRect" parent="MaskUI/Control/DetectionUI/Vbox/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("4_d6vme")
+
+[node name="TextureRect3" type="TextureRect" parent="MaskUI/Control/DetectionUI/Vbox/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("5_bd3mi")
+
+[node name="PrimaryUi" type="Control" parent="MaskUI/Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 104.0
+offset_top = -233.0
+offset_right = 476.0
+offset_bottom = -71.0
+grow_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="MaskUI/Control/PrimaryUi"]
+modulate = Color(1, 1, 1, 0.6156863)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.53333336, 0.37254903, 0.4392157, 1)
+
+[node name="Hbox" type="HBoxContainer" parent="MaskUI/Control/PrimaryUi"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -114.0
+offset_bottom = 114.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MaskUI/Control/PrimaryUi/Hbox"]
+layout_mode = 2
+texture = ExtResource("6_w7xgh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MaskUI/Control/PrimaryUi/Hbox"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = -36
+
+[node name="Charges" type="HBoxContainer" parent="MaskUI/Control/PrimaryUi/Hbox/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MaskUI/Control/PrimaryUi/Hbox/VBoxContainer/Charges"]
+layout_mode = 2
+texture = ExtResource("7_lbpgf")
+
+[node name="LifForms" type="HBoxContainer" parent="MaskUI/Control/PrimaryUi/Hbox/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MaskUI/Control/PrimaryUi/Hbox/VBoxContainer/LifForms"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("3_siddx")
+
+[node name="TextureRect2" type="TextureRect" parent="MaskUI/Control/PrimaryUi/Hbox/VBoxContainer/LifForms"]
+layout_mode = 2
+texture = ExtResource("5_bd3mi")

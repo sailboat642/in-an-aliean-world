@@ -126,7 +126,6 @@ rotates = false
 loop = false
 
 [node name="Player" parent="Paths/HillPath/PlayerPathFollow" node_paths=PackedStringArray("path_follow") instance=ExtResource("2_qycdm")]
-rotation = -0.098209776
 speed = 1000.0
 path_follow = NodePath("..")
 
