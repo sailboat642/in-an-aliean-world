@@ -5,8 +5,10 @@ extends Node2D
 
 @onready var lifeform_type = $PlayerForm
 @onready var camera: Camera2D = $Camera2D
-@export var lifeform_data: LifeForm
+@export var player_lifeform_data: LifeForm
+@export var stored_lifeform_data: LifeForm
 @onready var Mask: Node2D = $Mask
+var is_player_disguised = false
 
 var original_texture: Texture2D
 var original_scale: Vector2
@@ -27,21 +29,30 @@ func _process(delta):
 	if (Input.is_action_pressed("move_right") and can_move):
 		lifeform_type.scale.x = abs(scale.x)
 		lifeform_type.walk()
-		
 		path_follow.progress += delta * speed
+		return
+		
 	if (Input.is_action_pressed("move_left") and can_move):
 		lifeform_type.scale.x = -abs(scale.x)
 		lifeform_type.walk()
 		path_follow.progress -= delta * speed
+		return
 		
-	if (Input.is_action_just_pressed("transform")):
-		load_lifeform()
+	if (Input.is_action_just_pressed("transform") and not is_player_disguised):
+		load_lifeform(stored_lifeform_data)
+		is_player_disguised = true
+		return
 		
-	if not Input.is_anything_pressed():
-		lifeform_type.idle()
+	if (Input.is_action_just_pressed("revert") and is_player_disguised):
+		load_lifeform(player_lifeform_data)
+		is_player_disguised = false
+		return
+	
+	lifeform_type.idle()
+
 
 	
-func load_lifeform() -> void:
+func load_lifeform(lifeform_data: LifeForm) -> void:
 	# 1. Create the new instance from your Resource
 	var new_form = lifeform_data.form_behaviour.instantiate()
 	
