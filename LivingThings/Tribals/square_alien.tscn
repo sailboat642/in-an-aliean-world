@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:45382c0eb5989d32d363a507cc5764183d255652aec9397277f3559e5c787c46
-size 20479
+[gd_scene load_steps=5 format=3 uid="uid://d3mo6h8ua10cq"]
+
+[ext_resource type="Script" uid="uid://cocw0knfbh0jt" path="res://LivingThings/Tribals/alien_ai.gd" id="1_cs015"]
+[ext_resource type="PackedScene" uid="uid://b4al8bexv0lok" path="res://LivingThings/Tribals/squarealien_behaviour.tscn" id="1_ucqck"]
+[ext_resource type="Resource" uid="uid://cqfe0n34lwni4" path="res://LivingThings/Tribals/squarealien_form.tres" id="2_1lddo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vff5s"]
+size = Vector2(454, 400)
+
+[node name="SquareAlien" type="Area2D" groups=["aliens"]]
+script = ExtResource("1_cs015")
+lifeform_data = ExtResource("2_1lddo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7, -190)
+shape = SubResource("RectangleShape2D_vff5s")
+
+[node name="SquareAlienBehaviour" parent="." instance=ExtResource("1_ucqck")]

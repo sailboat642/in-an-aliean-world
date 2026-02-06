@@ -5,16 +5,10 @@ extends Node2D
 
 @onready var lifeform_type = $PlayerForm
 @onready var camera: Camera2D = $Camera2D
-@export var player_lifeform_data: LifeForm
-@export var stored_lifeform_data: LifeForm
 @onready var Mask: Node2D = $Mask
-var is_player_disguised = false
 
 var original_texture: Texture2D
 var original_scale: Vector2
-
-var can_transform := false
-var target_sprite: Sprite2D = null
 
 var can_move := true
 
@@ -38,15 +32,7 @@ func _process(delta):
 		path_follow.progress -= delta * speed
 		return
 		
-	if (Input.is_action_just_pressed("transform") and not is_player_disguised):
-		load_lifeform(stored_lifeform_data)
-		is_player_disguised = true
-		return
-		
-	if (Input.is_action_just_pressed("revert") and is_player_disguised):
-		load_lifeform(player_lifeform_data)
-		is_player_disguised = false
-		return
+	
 	
 	lifeform_type.idle()
 

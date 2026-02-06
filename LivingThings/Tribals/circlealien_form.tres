@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="LifeForm" load_steps=4 format=3 uid="uid://7uwtlnrhosjk"]
+
+[ext_resource type="Texture2D" uid="uid://bmpax1ksn6yag" path="res://Art/mask_textures/circleform_icon.tres" id="1_6tmfx"]
+[ext_resource type="Script" uid="uid://d01pbm672ibjm" path="res://LivingThings/LifeForm.gd" id="2_k8ji6"]
+[ext_resource type="PackedScene" uid="uid://bkahutq8mqldb" path="res://LivingThings/Tribals/Fresh/circlealien_behaviour.tscn" id="2_utx2i"]
+
+[resource]
+script = ExtResource("2_k8ji6")
+form_name = "CircleAlien"
+UI_Icon = ExtResource("1_6tmfx")
+form_behaviour = ExtResource("2_utx2i")
+metadata/_custom_type_script = "uid://d01pbm672ibjm"

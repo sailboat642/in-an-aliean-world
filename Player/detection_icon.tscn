@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7uvcw2mu4ls1"]
+
+[ext_resource type="Texture2D" uid="uid://bmpax1ksn6yag" path="res://Art/mask_textures/circleform_icon.tres" id="1_q2vhj"]
+[ext_resource type="Texture2D" uid="uid://cbkr7fvuf1vmc" path="res://Art/left_indicator.png" id="2_iw782"]
+
+[node name="DetectionIcon" type="MarginContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="IconTexture" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_q2vhj")
+stretch_mode = 4
+
+[node name="SelectorArrow" type="TextureRect" parent="HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_iw782")
+expand_mode = 2
+stretch_mode = 4

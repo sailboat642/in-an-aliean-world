@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://eyrv3jvw153w"]
+[gd_scene load_steps=8 format=3 uid="uid://eyrv3jvw153w"]
 
 [ext_resource type="Texture2D" uid="uid://cwwqbhigw3s6w" path="res://Art/Background.png" id="1_nihca"]
 [ext_resource type="Texture2D" uid="uid://4mda3mehcubd" path="res://Art/Ground.png" id="2_slmhy"]
 [ext_resource type="PackedScene" uid="uid://cp7uwqqdciu45" path="res://Player/player.tscn" id="3_jr7n8"]
-[ext_resource type="PackedScene" uid="uid://bkahutq8mqldb" path="res://LivingThings/Tribals/Fresh/circle_alien.tscn" id="4_jr7n8"]
-[ext_resource type="PackedScene" uid="uid://cj15uy4hgm5u6" path="res://LivingThings/Tribals/Fresh/triangle_alien.tscn" id="5_84vcm"]
+[ext_resource type="PackedScene" uid="uid://d3mo6h8ua10cq" path="res://LivingThings/Tribals/square_alien.tscn" id="4_slmhy"]
+[ext_resource type="PackedScene" uid="uid://mrgkej4ljntb" path="res://LivingThings/Tribals/triangle_alien.tscn" id="5_84vcm"]
+[ext_resource type="PackedScene" uid="uid://r2pdafs1nid7" path="res://LivingThings/Tribals/circle_alien.tscn" id="6_mvobm"]
 
 [sub_resource type="Curve2D" id="Curve2D_84vcm"]
 _data = {
@@ -62,8 +63,14 @@ path_follow = NodePath("..")
 position = Vector2(0, 4661)
 rotation = -0.00034347735
 
-[node name="CircleAlien" parent="." instance=ExtResource("4_jr7n8")]
-position = Vector2(4006, 4660)
+[node name="SquareAlien" parent="." instance=ExtResource("4_slmhy")]
+position = Vector2(3384, 4646)
+
+[node name="SquareAlien2" parent="." instance=ExtResource("4_slmhy")]
+position = Vector2(4094, 4664)
 
 [node name="TriangleAlien" parent="." instance=ExtResource("5_84vcm")]
-position = Vector2(6232, 4670)
+position = Vector2(5208, 4643)
+
+[node name="CircleAlien" parent="." instance=ExtResource("6_mvobm")]
+position = Vector2(2187, 4671)

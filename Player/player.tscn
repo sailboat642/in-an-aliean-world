@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://dc7xv3cemi7wv" path="res://Player/PlayerMovement.gd" id="1_4ntmi"]
 [ext_resource type="Resource" uid="uid://4otg52ocahg5" path="res://Player/player_form.tres" id="2_fhl08"]
-[ext_resource type="Resource" uid="uid://7uwtlnrhosjk" path="res://LivingThings/circlealien_form.tres" id="2_k53q1"]
 [ext_resource type="PackedScene" uid="uid://bdpgbcfhdvg32" path="res://UtilityPrefab/PauseMenu/pause_menu.tscn" id="3_btcbx"]
 [ext_resource type="PackedScene" uid="uid://s0mpnhxk6p8y" path="res://Player/player_graphics.tscn" id="3_gwnis"]
 [ext_resource type="PackedScene" uid="uid://mukv4iusye5" path="res://Player/mask.tscn" id="4_gwnis"]
+[ext_resource type="Resource" uid="uid://cqfe0n34lwni4" path="res://LivingThings/Tribals/squarealien_form.tres" id="6_fhl08"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_btcbx"]
 radius = 48.891304
@@ -15,8 +15,6 @@ height = 266.2514
 collision_mask = 0
 script = ExtResource("1_4ntmi")
 speed = 600.0
-player_lifeform_data = ExtResource("2_fhl08")
-stored_lifeform_data = ExtResource("2_k53q1")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, -1200)
@@ -34,4 +32,6 @@ shape = SubResource("CapsuleShape2D_btcbx")
 position = Vector2(15, 0)
 
 [node name="Mask" parent="." instance=ExtResource("4_gwnis")]
-visible = false
+position = Vector2(20, -351)
+player_lifeform_data = ExtResource("2_fhl08")
+stored_lifeform_data = ExtResource("6_fhl08")

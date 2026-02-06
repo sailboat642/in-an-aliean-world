@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bkahutq8mqldb"]
+[gd_scene load_steps=6 format=3 uid="uid://bkahutq8mqldb"]
 
 [ext_resource type="Texture2D" uid="uid://c10mgvv71fk27" path="res://Art/Circle_Alien_Texture_Atlas.png" id="1_e3t7b"]
-[ext_resource type="Script" uid="uid://bl42hrajlor8n" path="res://LivingThings/Tribals/alien.gd" id="1_ink88"]
-[ext_resource type="Resource" uid="uid://7uwtlnrhosjk" path="res://LivingThings/circlealien_form.tres" id="2_8ouka"]
+[ext_resource type="Script" uid="uid://bl42hrajlor8n" path="res://LivingThings/Tribals/alien_behaviour.gd" id="1_ink88"]
 
 [sub_resource type="Animation" id="Animation_ink88"]
 length = 0.001
@@ -65,9 +64,8 @@ _data = {
 &"idle": SubResource("Animation_e3t7b")
 }
 
-[node name="CircleAlien" type="Node2D"]
+[node name="CircleAlienBehaviour" type="Node2D"]
 script = ExtResource("1_ink88")
-lifeform_data = ExtResource("2_8ouka")
 
 [node name="Graphics" type="Node2D" parent="."]
 position = Vector2(-268, -476)
@@ -131,8 +129,8 @@ rest = Transform2D(1, 0, 0, 1, -64, -19)
 
 [node name="FootL" type="Bone2D" parent="Skeleton2D/Hip/LegL"]
 position = Vector2(-2, 101)
-rotation = -0.012142048
-scale = Vector2(0.9999999, 0.9999999)
+rotation = -0.012142049
+scale = Vector2(0.99999976, 0.99999976)
 rest = Transform2D(1, 0, 0, 1, -2, 101)
 
 [node name="Chest" type="Bone2D" parent="Skeleton2D/Hip"]
