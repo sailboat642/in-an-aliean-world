@@ -1,10 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://mukv4iusye5"]
+[gd_scene load_steps=9 format=3 uid="uid://mukv4iusye5"]
 
 [ext_resource type="Script" uid="uid://4d605jmwo8a0" path="res://Player/mask.gd" id="1_c1l40"]
 [ext_resource type="Texture2D" uid="uid://ohkoibf1q143" path="res://Art/Player Sprite Atlas.png" id="2_16w8d"]
 [ext_resource type="PackedScene" uid="uid://b7uvcw2mu4ls1" path="res://Player/detection_icon.tscn" id="2_bd3mi"]
-[ext_resource type="Texture2D" uid="uid://b0mjs4dp0thaf" path="res://Art/mask_textures/triangleanimal_icon.tres" id="3_siddx"]
-[ext_resource type="Texture2D" uid="uid://bmpax1ksn6yag" path="res://Art/mask_textures/circleform_icon.tres" id="5_bd3mi"]
 [ext_resource type="Texture2D" uid="uid://dkdn3qy37phpp" path="res://Art/mask_textures/mask_basic.tres" id="6_w7xgh"]
 [ext_resource type="Texture2D" uid="uid://df2mu7u2qx11d" path="res://Art/mask_textures/charge_basic.tres" id="7_lbpgf"]
 [ext_resource type="Texture2D" uid="uid://h7giyjk1fpgo" path="res://Art/small_triangle.png" id="8_d6vme"]
@@ -120,37 +118,21 @@ grow_vertical = 2
 layout_mode = 2
 texture = ExtResource("6_w7xgh")
 
-[node name="control" type="Control" parent="MaskUI/Control/PrimaryUi/Hbox"]
+[node name="control" type="VBoxContainer" parent="MaskUI/Control/PrimaryUi/Hbox"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Charges" type="HBoxContainer" parent="MaskUI/Control/PrimaryUi/Hbox/control"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -100.0
-offset_right = 260.0
-grow_vertical = 0
+layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="MaskUI/Control/PrimaryUi/Hbox/control/Charges"]
 layout_mode = 2
 texture = ExtResource("7_lbpgf")
 
 [node name="LifForms" type="HBoxContainer" parent="MaskUI/Control/PrimaryUi/Hbox/control"]
-layout_mode = 1
-offset_right = 260.0
-offset_bottom = 100.0
-
-[node name="TextureRect" type="TextureRect" parent="MaskUI/Control/PrimaryUi/Hbox/control/LifForms"]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-size_flags_horizontal = 0
-texture = ExtResource("3_siddx")
-
-[node name="TextureRect2" type="TextureRect" parent="MaskUI/Control/PrimaryUi/Hbox/control/LifForms"]
-layout_mode = 2
-texture = ExtResource("5_bd3mi")
 
 [node name="WorldArrow" type="Sprite2D" parent="."]
 visible = false

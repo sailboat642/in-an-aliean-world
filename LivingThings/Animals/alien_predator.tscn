@@ -1,10 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://c1rbx0e4d5iac"]
 
-[ext_resource type="Texture2D" uid="uid://bjp7d1hjb0tt0" path="res://Art/Alien_Predator.png" id="1_xoitl"]
+[ext_resource type="PackedScene" uid="uid://cytlh5auuh1k0" path="res://LivingThings/Animals/alienpredator_behaviour.tscn" id="1_xoitl"]
 
 [node name="AlienPredator" type="Node2D"]
 
-[node name="Graphics" type="Sprite2D" parent="."]
-position = Vector2(61, -182)
-scale = Vector2(0.51573324, 0.51573324)
-texture = ExtResource("1_xoitl")
+[node name="AlienPredatorBehaviour" parent="." instance=ExtResource("1_xoitl")]

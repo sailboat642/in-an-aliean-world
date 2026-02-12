@@ -36,7 +36,7 @@ func _process(delta)->void:
 	world_arrow.position.y += sin(Time.get_ticks_msec() * 0.01) * 0.5
 	
 	if (Input.is_action_just_pressed("transform") and not is_player_disguised):
-		if (charges > 0):
+		if (charges > 0 and stored_forms.size() > 0):
 			load_lifeform(stored_forms[0])
 			is_player_disguised = true
 			charges -= 1
