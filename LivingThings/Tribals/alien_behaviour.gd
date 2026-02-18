@@ -10,7 +10,7 @@ func walk() -> void:
 	$AnimationPlayer.play("walk")
 	
 func idle() -> void:
-	$AnimationPlayer.reset_section()
+	$AnimationPlayer.play("RESET")
 	$AnimationPlayer.play("idle")
 	
 func alarm() -> void:

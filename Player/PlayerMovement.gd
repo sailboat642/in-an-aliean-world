@@ -6,6 +6,7 @@ extends Node2D
 @onready var lifeform_type = $PlayerForm
 @onready var camera: Camera2D = $Camera2D
 @onready var Mask: Node2D = $Mask
+@export var current_lifeform_data: LifeForm
 
 var original_texture: Texture2D
 var original_scale: Vector2
@@ -35,13 +36,11 @@ func _process(delta):
 	
 	
 	lifeform_type.idle()
-
-
 	
 func load_lifeform(lifeform_data: LifeForm) -> void:
 	# 1. Create the new instance from your Resource
 	var new_form = lifeform_data.form_behaviour.instantiate()
-	
+	current_lifeform_data = lifeform_data
 	# 2. Remove the OLD node from the scene
 	# We use lifeform_type because it currently points to the $PlayerForm node
 	if lifeform_type and lifeform_type.get_parent():
@@ -61,3 +60,5 @@ func load_lifeform(lifeform_data: LifeForm) -> void:
 	
 	print("Transformed into new lifeform!")
 	
+func get_lifeform_data():
+	return current_lifeform_data

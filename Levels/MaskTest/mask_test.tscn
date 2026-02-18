@@ -3,15 +3,21 @@
 [ext_resource type="Texture2D" uid="uid://cwwqbhigw3s6w" path="res://Art/Background.png" id="1_nihca"]
 [ext_resource type="Texture2D" uid="uid://4mda3mehcubd" path="res://Art/Ground.png" id="2_slmhy"]
 [ext_resource type="PackedScene" uid="uid://cp7uwqqdciu45" path="res://Player/player.tscn" id="3_jr7n8"]
-[ext_resource type="PackedScene" uid="uid://d3mo6h8ua10cq" path="res://LivingThings/Tribals/square_alien.tscn" id="4_slmhy"]
-[ext_resource type="PackedScene" uid="uid://mrgkej4ljntb" path="res://LivingThings/Tribals/triangle_alien.tscn" id="5_84vcm"]
-[ext_resource type="PackedScene" uid="uid://r2pdafs1nid7" path="res://LivingThings/Tribals/circle_alien.tscn" id="6_mvobm"]
+[ext_resource type="PackedScene" uid="uid://b5dykyrblsnr2" path="res://LivingThings/Animals/alien_prey.tscn" id="8_fpixt"]
 
 [sub_resource type="Curve2D" id="Curve2D_84vcm"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 4661, 0, 0, 0, 0, 14557, 4656)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 4661, 0, 0, 0, 0, 3279, 4657, 0, 0, 0, 0, 5341, 4669, 0, 0, 0, 0, 9441, 4693)
+}
+point_count = 4
+
+[sub_resource type="Curve2D" id="Curve2D_slmhy"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -4, 4958.2144, 0, 0, 0, 0, 9431, 4660)
 }
 point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_jr7n8"]
 
 [node name="MaskTest" type="Node2D"]
 
@@ -49,28 +55,29 @@ texture = ExtResource("2_slmhy")
 [node name="Path2D" type="Path2D" parent="Paths"]
 curve = SubResource("Curve2D_84vcm")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Paths/Path2D"]
+[node name="PlayerPath" type="PathFollow2D" parent="Paths/Path2D"]
 position = Vector2(0, 4661)
+rotation = -0.00034347735
 rotates = false
 loop = false
 
-[node name="Player" parent="Paths/Path2D/PathFollow2D" node_paths=PackedStringArray("path_follow") instance=ExtResource("3_jr7n8")]
-position = Vector2(675, -1)
+[node name="Player" parent="Paths/Path2D/PlayerPath" node_paths=PackedStringArray("path_follow") instance=ExtResource("3_jr7n8")]
 speed = 800.0
 path_follow = NodePath("..")
 
-[node name="PathFollow2D2" type="PathFollow2D" parent="Paths/Path2D"]
-position = Vector2(0, 4661)
+[node name="Path2D2" type="Path2D" parent="Paths"]
+position = Vector2(10, -205)
+curve = SubResource("Curve2D_slmhy")
+
+[node name="AlienPath" type="PathFollow2D" parent="Paths/Path2D2"]
+position = Vector2(-4, 4958.2144)
 rotation = -0.00034347735
+rotates = false
 
-[node name="SquareAlien" parent="." instance=ExtResource("4_slmhy")]
-position = Vector2(3384, 4646)
+[node name="AlienPrey2" parent="Paths/Path2D2/AlienPath" instance=ExtResource("8_fpixt")]
+rotation = 0.00034347735
+speed = 500.0
+stop_stations = Array[float]([0.0, 0.3, 1.0])
 
-[node name="SquareAlien2" parent="." instance=ExtResource("4_slmhy")]
-position = Vector2(4094, 4664)
-
-[node name="TriangleAlien" parent="." instance=ExtResource("5_84vcm")]
-position = Vector2(5208, 4643)
-
-[node name="CircleAlien" parent="." instance=ExtResource("6_mvobm")]
-position = Vector2(2187, 4671)
+[node name="Path2D" type="Path2D" parent="Paths/Path2D2"]
+curve = SubResource("Curve2D_jr7n8")

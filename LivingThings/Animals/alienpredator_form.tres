@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="LifeForm" load_steps=4 format=3 uid="uid://cw3hu6qeptkmw"]
+
+[ext_resource type="Texture2D" uid="uid://bmwb312v600ip" path="res://Art/mask_textures/squareanimal_icon.tres" id="1_ayh8e"]
+[ext_resource type="Script" uid="uid://d01pbm672ibjm" path="res://LivingThings/LifeForm.gd" id="1_ipgon"]
+[ext_resource type="PackedScene" uid="uid://cytlh5auuh1k0" path="res://LivingThings/Animals/alienpredator_behaviour.tscn" id="2_cknvl"]
+
+[resource]
+script = ExtResource("1_ipgon")
+form_name = "AlienPredator"
+UI_Icon = ExtResource("1_ayh8e")
+form_behaviour = ExtResource("2_cknvl")
+metadata/_custom_type_script = "uid://d01pbm672ibjm"

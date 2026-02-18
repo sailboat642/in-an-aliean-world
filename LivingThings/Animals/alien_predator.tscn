@@ -1,7 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://c1rbx0e4d5iac"]
+[gd_scene load_steps=5 format=3 uid="uid://c1rbx0e4d5iac"]
 
+[ext_resource type="Script" uid="uid://cocw0knfbh0jt" path="res://LivingThings/Tribals/alien_ai.gd" id="1_hraud"]
 [ext_resource type="PackedScene" uid="uid://cytlh5auuh1k0" path="res://LivingThings/Animals/alienpredator_behaviour.tscn" id="1_xoitl"]
+[ext_resource type="Resource" uid="uid://cw3hu6qeptkmw" path="res://LivingThings/Animals/alienpredator_form.tres" id="2_u3c1i"]
 
-[node name="AlienPredator" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u3c1i"]
+size = Vector2(556, 440)
+
+[node name="AlienPredator" type="Area2D" groups=["aliens"]]
+script = ExtResource("1_hraud")
+lifeform_data = ExtResource("2_u3c1i")
 
 [node name="AlienPredatorBehaviour" parent="." instance=ExtResource("1_xoitl")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(26, -210)
+shape = SubResource("RectangleShape2D_u3c1i")

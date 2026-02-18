@@ -29,6 +29,8 @@ var is_player_disguised = false
 
 func _ready():
 	charges = max_charges
+	if Player == null:
+		return
 	update_ui()
 
 func _process(delta)->void:
@@ -68,6 +70,7 @@ func load_lifeform(lifeform_data: LifeForm) -> void:
 		
 	Player.add_child(new_form)
 	Player.lifeform_type = new_form
+	Player.current_lifeform_data = lifeform_data
 	
 	# Optional: Match the name so $PlayerForm calls don't break elsewhere
 	new_form.name = "PlayerForm"
