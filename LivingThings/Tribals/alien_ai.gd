@@ -16,8 +16,10 @@ var is_waiting: bool = false
 var current_station_idx: int = 0
 
 # Alien Response System
-@export var disposition_table: Dictionary = {
-	"Player": "ALL",
+@export var disposition_table: Dictionary[LifeForm.Species, LifeForm.Action] = {
+	LifeForm.Species.PLAYER	: LifeForm.Action.ALL,
+	LifeForm.Species.ALIEN_PREY: LifeForm.Action.ALARM,
+	LifeForm.Species.ALIEN_PREDATOR: LifeForm.Action.ALARM
 }
 
 
@@ -29,7 +31,6 @@ func _ready() -> void:
 	stop_stations.sort()
 	path_follow.rotates = false
 	path_follow.loop = false
-	pass # Replace with function body.
 
 
 func _process(delta: float) -> void:
@@ -95,9 +96,9 @@ func _update_facing_via_tangent():
 		diff_x *= -1
 
 	if diff_x > 0:
-		behaviour.scale.x = abs(behaviour.scale.x) # Face Right
+		scale.x = abs(scale.x) # Face Right
 	elif diff_x < 0:
-		behaviour.scale.x = -abs(behaviour.scale.x) # Face Left
+		scale.x = -abs(scale.x) # Face Left
 
 
 
@@ -107,13 +108,35 @@ func get_path_length() -> float:
 func on_area_entered_fov(area):
 	if area.is_in_group("aliens"):
 		print("lifeform detected")
+		area.get_lifeform_data()
+		
 	if area.is_in_group("player"):
 		print("player detected")
 		var player_formdata = area.get_lifeform_data()
-		if (player_formdata.form_name == "Player"):
+		if (player_formdata.form_name == LifeForm.Species.PLAYER):
+			behaviour.alarm()
 			print("That is susupicious")
 		else:
 			print("Hmm..seems okay!")
+
+func react(species, action):
+	# if species in table
+	# species.get action
+	# if or species action All
+		#flee
+	# else if species action pair matches
+		# flee
+	pass
+
+func flee():
+	behaviour.alarm()
+	# point away from antagonist
+	# run for 6 seconds
+	# destroy
+	pass
+	
+func chase():
+	pass
 
 func on_area_exited_fov(area):
 	if area.is_in_group("aliens"):

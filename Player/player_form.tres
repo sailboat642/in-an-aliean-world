@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("1_sjlao")
-form_name = "Player"
+form_name = 0
 UI_Icon = ExtResource("1_vvu3f")
 form_behaviour = ExtResource("2_nofih")
 metadata/_custom_type_script = "uid://d01pbm672ibjm"

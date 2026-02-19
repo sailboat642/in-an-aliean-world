@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("1_ipgon")
-form_name = "AlienPredator"
+form_name = 5
 UI_Icon = ExtResource("1_ayh8e")
 form_behaviour = ExtResource("2_cknvl")
 metadata/_custom_type_script = "uid://d01pbm672ibjm"

@@ -13,9 +13,9 @@ point_count = 4
 
 [sub_resource type="Curve2D" id="Curve2D_slmhy"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -4, 4958.2144, 0, 0, 0, 0, 9431, 4660)
+"points": PackedVector2Array(0, 0, 0, 0, 2240, 5115, 0, 0, 0, 0, 5254, 5011, 0, 0, 0, 0, 9085, 5206, 33.637512, 370.01266, -33.637512, -370.01266, 5755, 5284, -756.84406, -117.7313, 756.84406, 117.7313, 8211, 4988, 0, 0, 0, 0, 2967, 5391)
 }
-point_count = 2
+point_count = 6
 
 [sub_resource type="Curve2D" id="Curve2D_jr7n8"]
 
@@ -34,6 +34,7 @@ grow_vertical = 2
 texture = ExtResource("1_nihca")
 
 [node name="Terrain" type="Node2D" parent="."]
+visible = false
 
 [node name="Ground" type="Sprite2D" parent="Terrain"]
 position = Vector2(2449.0002, 4992.0005)
@@ -70,14 +71,14 @@ position = Vector2(10, -205)
 curve = SubResource("Curve2D_slmhy")
 
 [node name="AlienPath" type="PathFollow2D" parent="Paths/Path2D2"]
-position = Vector2(-4, 4958.2144)
+position = Vector2(2240, 5115)
 rotation = -0.00034347735
 rotates = false
 
 [node name="AlienPrey2" parent="Paths/Path2D2/AlienPath" instance=ExtResource("8_fpixt")]
 rotation = 0.00034347735
 speed = 500.0
-stop_stations = Array[float]([0.0, 0.3, 1.0])
+stop_stations = Array[float]([0.0, 0.3, 1.0, 0.1, 0.8, 0.6])
 
 [node name="Path2D" type="Path2D" parent="Paths/Path2D2"]
 curve = SubResource("Curve2D_jr7n8")

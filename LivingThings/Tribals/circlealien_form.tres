@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("2_k8ji6")
-form_name = "CircleAlien"
+form_name = 1
 UI_Icon = ExtResource("1_6tmfx")
 form_behaviour = ExtResource("2_utx2i")
 metadata/_custom_type_script = "uid://d01pbm672ibjm"
