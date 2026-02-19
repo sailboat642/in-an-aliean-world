@@ -11,6 +11,11 @@ extends Area2D
 @export var idle_time: float = 5.0
 @export var stop_stations: Array[float]= [0.0, 1.0]
 
+enum State {PATROL, CHASE, FLEE, DEAD}
+var current_state: State = State.PATROL
+var target_node: Node2D = null
+
+# PATROL var
 var moving_forward: bool = true
 var is_waiting: bool = false
 var current_station_idx: int = 0
@@ -32,10 +37,17 @@ func _ready() -> void:
 	path_follow.rotates = false
 	path_follow.loop = false
 
-
 func _process(delta: float) -> void:
-	if is_waiting or not path_follow:
-		return
+	match current_state:
+		State.PATROL:
+			_process_patrol(delta)
+		State.CHASE:
+			_process_chase(delta)
+		State.FLEE:
+			_process_flee(delta)
+
+func _process_patrol(delta: float) -> void:
+	if is_waiting or not path_follow: return
 
 	if stop_stations.size() < 1:
 		print("stop stations not defined")
@@ -108,35 +120,69 @@ func get_path_length() -> float:
 func on_area_entered_fov(area):
 	if area.is_in_group("aliens"):
 		print("lifeform detected")
-		area.get_lifeform_data()
+		var lifeform_data = area.get_lifeform_data()
+		react(area, lifeform_data.form_name, LifeForm.Action.ALL)
 		
-	if area.is_in_group("player"):
+	if area.is_in_group("player"):	
 		print("player detected")
-		var player_formdata = area.get_lifeform_data()
-		if (player_formdata.form_name == LifeForm.Species.PLAYER):
-			behaviour.alarm()
-			print("That is susupicious")
-		else:
-			print("Hmm..seems okay!")
+		var player_formdata = area.get_lifeform_data() as LifeForm
+		react(area, player_formdata.form_name, LifeForm.Action.ALL)
+		
 
-func react(species, action):
-	# if species in table
-	# species.get action
-	# if or species action All
-		#flee
-	# else if species action pair matches
-		# flee
-	pass
+func react(character, species: LifeForm.Species, action: LifeForm.Action):
+	if disposition_table.has(species):
+		if disposition_table[species] == action:
+			flee(character)
+			return
+	print("seems okay")
 
-func flee():
-	behaviour.alarm()
-	# point away from antagonist
-	# run for 6 seconds
-	# destroy
-	pass
+
+func flee(antagonizer: Node2D) -> void:
+	if current_state == State.FLEE: return
 	
-func chase():
-	pass
+	target_node = antagonizer
+	current_state = State.FLEE
+	behaviour.alarm() # Trigger animation [cite: 2]
+	
+	# Emit signal with name for the UI/Log
+	# behaviour.action_performed.emit(LifeForm.Action.ALARM, lifeform_data.form_name)
+	
+	# Wait 6 seconds, then vanish
+	await get_tree().create_timer(6.0).timeout
+	queue_free()
+
+func _process_flee(delta: float) -> void:
+	if not target_node: return
+	
+	# Calculate direction away from target
+	var dir = (global_position - target_node.global_position).normalized()
+	global_position = Vector2(global_position.x + dir.x * (speed * 1.5) * delta, global_position.y) # Run faster than walk speed
+	
+	# Update Facing
+	scale.x = abs(scale.x) if dir.x > 0 else -abs(scale.x)
+
+func chase(target: Node2D) -> void:
+	target_node = target
+	current_state = State.CHASE
+	behaviour.alarm() # Or a specific ACTION_A for aggressive [cite: 2]
+
+func _process_chase(delta: float) -> void:
+	if not target_node: return
+	
+	var dir = (target_node.global_position - global_position).normalized()
+	global_position += dir * speed * delta
+	
+	# Update Facing
+	scale.x = abs(scale.x) if dir.x > 0 else -abs(scale.x)
+	
+	# Check for 'Lose' condition (Simple distance check or use a hit Area2D)
+	if global_position.distance_to(target_node.global_position) < 20.0:
+		handle_player_loss()
+
+func handle_player_loss():
+	current_state = State.DEAD
+	print("Game Over: Caught by ", LifeForm.Species.find_key(lifeform_data.form_name))
+	# SceneTree.change_scene_to_file("res://game_over.tscn")
 
 func on_area_exited_fov(area):
 	if area.is_in_group("aliens"):

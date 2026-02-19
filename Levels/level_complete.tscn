@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://cn62xa4s3bpd8"]
+
+[ext_resource type="Texture2D" uid="uid://cwwqbhigw3s6w" path="res://Art/Background.png" id="1_pw5hc"]
+
+[sub_resource type="Theme" id="Theme_pw5hc"]
+Button/font_sizes/font_size = 36
+
+[sub_resource type="LabelSettings" id="LabelSettings_pw5hc"]
+font_size = 72
+
+[node name="LevelComplete" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_pw5hc")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -87.000015
+offset_top = -58.000023
+offset_right = 1833.0
+offset_bottom = 1022.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5551403, 0.5551403)
+texture = ExtResource("1_pw5hc")
+stretch_mode = 2
+flip_v = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 715.0
+offset_top = 85.0
+offset_right = 1294.0
+offset_bottom = 184.0
+text = "Level Completed"
+label_settings = SubResource("LabelSettings_pw5hc")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 896.0
+offset_top = 391.0
+offset_right = 1142.0
+offset_bottom = 449.0
+text = "Back to Menu"

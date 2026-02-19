@@ -62,3 +62,6 @@ func load_lifeform(lifeform_data: LifeForm) -> void:
 	
 func get_lifeform_data():
 	return current_lifeform_data
+
+func set_lifeform_data(lifeform_data: LifeForm):
+	current_lifeform_data = lifeform_data

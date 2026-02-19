@@ -70,7 +70,7 @@ func load_lifeform(lifeform_data: LifeForm) -> void:
 		
 	Player.add_child(new_form)
 	Player.lifeform_type = new_form
-	Player.current_lifeform_data = lifeform_data
+	Player.set_lifeform_data(lifeform_data)
 	
 	# Optional: Match the name so $PlayerForm calls don't break elsewhere
 	new_form.name = "PlayerForm"
@@ -168,6 +168,7 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 func store_new_form(new_data: LifeForm):
 	# 1. Add the new form to the end of the list
 	stored_forms.append(new_data)
+	print(new_data.Species.find_key(new_data.form_name))
 	
 	# 2. Check if we've exceeded our current mask capacity
 	while stored_forms.size() > max_slots:
