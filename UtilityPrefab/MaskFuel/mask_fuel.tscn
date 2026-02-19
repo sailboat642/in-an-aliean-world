@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://1kdnurktfh6i"]
+
+[ext_resource type="Texture2D" uid="uid://i3cxami2bxq7" path="res://Art/small_circle.png" id="1_6hw0x"]
+[ext_resource type="Script" uid="uid://ix28kgih5718" path="res://UtilityPrefab/MaskFuel/mask_fuel.gd" id="1_bmu2p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bmu2p"]
+size = Vector2(267, 489)
+
+[node name="MaskFuel" type="Area2D"]
+script = ExtResource("1_bmu2p")
+
+[node name="SmallCircle" type="Sprite2D" parent="."]
+position = Vector2(1, -275)
+texture = ExtResource("1_6hw0x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, -246.5)
+shape = SubResource("RectangleShape2D_bmu2p")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -178,3 +178,10 @@ func store_new_form(new_data: LifeForm):
 	
 	_update_resource_ui()
 	print("Forms currently in mask: ", stored_forms.size())
+	
+func add_charge(i: int):
+	charges += i
+	if charges > max_charges:
+		charges = max_charges
+		
+	update_ui()

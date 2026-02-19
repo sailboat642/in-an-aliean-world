@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://eyrv3jvw153w"]
+[gd_scene load_steps=10 format=3 uid="uid://eyrv3jvw153w"]
 
 [ext_resource type="Texture2D" uid="uid://cwwqbhigw3s6w" path="res://Art/Background.png" id="1_nihca"]
 [ext_resource type="Texture2D" uid="uid://4mda3mehcubd" path="res://Art/Ground.png" id="2_slmhy"]
 [ext_resource type="PackedScene" uid="uid://cp7uwqqdciu45" path="res://Player/player.tscn" id="3_jr7n8"]
+[ext_resource type="PackedScene" uid="uid://1kdnurktfh6i" path="res://UtilityPrefab/MaskFuel/mask_fuel.tscn" id="5_jr7n8"]
+[ext_resource type="PackedScene" uid="uid://bfh8027b41fe1" path="res://UtilityPrefab/PureEnergy/pure_energy.tscn" id="6_84vcm"]
+[ext_resource type="PackedScene" uid="uid://ct2woa2cbfgm3" path="res://UtilityPrefab/HidingBush/hiding_bush.tscn" id="7_mvobm"]
 [ext_resource type="PackedScene" uid="uid://b5dykyrblsnr2" path="res://LivingThings/Animals/alien_prey.tscn" id="8_fpixt"]
 
 [sub_resource type="Curve2D" id="Curve2D_84vcm"]
@@ -11,13 +14,11 @@ _data = {
 }
 point_count = 4
 
-[sub_resource type="Curve2D" id="Curve2D_slmhy"]
+[sub_resource type="Curve2D" id="Curve2D_mvobm"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 2240, 5115, 0, 0, 0, 0, 5254, 5011, 0, 0, 0, 0, 9085, 5206, 33.637512, 370.01266, -33.637512, -370.01266, 5755, 5284, -756.84406, -117.7313, 756.84406, 117.7313, 8211, 4988, 0, 0, 0, 0, 2967, 5391)
+"points": PackedVector2Array(0, 0, 0, 0, 1621, 4785, 0, 0, 0, 0, 2844, 4791)
 }
-point_count = 6
-
-[sub_resource type="Curve2D" id="Curve2D_jr7n8"]
+point_count = 2
 
 [node name="MaskTest" type="Node2D"]
 
@@ -51,6 +52,18 @@ position = Vector2(12126, 4992)
 scale = Vector2(1.2743787, 1.2743785)
 texture = ExtResource("2_slmhy")
 
+[node name="MaskFuel" parent="." instance=ExtResource("5_jr7n8")]
+position = Vector2(6793, 4707)
+
+[node name="MaskFuel2" parent="." instance=ExtResource("5_jr7n8")]
+position = Vector2(7407, 4670)
+
+[node name="PureEnergy" parent="." instance=ExtResource("6_84vcm")]
+position = Vector2(9102, 4663)
+
+[node name="HidingBush" parent="." instance=ExtResource("7_mvobm")]
+position = Vector2(1081, 4685)
+
 [node name="Paths" type="Node2D" parent="."]
 
 [node name="Path2D" type="Path2D" parent="Paths"]
@@ -67,18 +80,14 @@ speed = 800.0
 path_follow = NodePath("..")
 
 [node name="Path2D2" type="Path2D" parent="Paths"]
-position = Vector2(10, -205)
-curve = SubResource("Curve2D_slmhy")
+curve = SubResource("Curve2D_mvobm")
 
-[node name="AlienPath" type="PathFollow2D" parent="Paths/Path2D2"]
-position = Vector2(2240, 5115)
-rotation = -0.00034347735
-rotates = false
+[node name="PathFollow2D" type="PathFollow2D" parent="Paths/Path2D2"]
+position = Vector2(1621, 4785)
+rotation = 0.00490593
 
-[node name="AlienPrey2" parent="Paths/Path2D2/AlienPath" instance=ExtResource("8_fpixt")]
-rotation = 0.00034347735
-speed = 500.0
-stop_stations = Array[float]([0.0, 0.3, 1.0, 0.1, 0.8, 0.6])
-
-[node name="Path2D" type="Path2D" parent="Paths/Path2D2"]
-curve = SubResource("Curve2D_jr7n8")
+[node name="AlienPrey" parent="Paths/Path2D2/PathFollow2D" instance=ExtResource("8_fpixt")]
+rotation = -0.00490593
+disposition_table = Dictionary[int, int]({
+0: 6
+})

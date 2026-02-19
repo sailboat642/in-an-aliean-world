@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=3 uid="uid://ct2woa2cbfgm3"]
+
+[ext_resource type="Texture2D" uid="uid://b2q01m3tsql7v" path="res://Art/BushesAndTrees.png" id="1_uid65"]
+[ext_resource type="Script" uid="uid://dbqbnm8a5qh5c" path="res://UtilityPrefab/HidingBush/hiding_bush.gd" id="1_wmg3p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmg3p"]
+atlas = ExtResource("1_uid65")
+region = Rect2(1280, 1024, 640, 512)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vmfi1"]
+size = Vector2(567, 461)
+
+[sub_resource type="Animation" id="Animation_uid65"]
+resource_name = "default"
+length = 0.66667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.33333334, 0.5, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.3199998, 1), Vector2(1, 1), Vector2(1, 1.2800003), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wmg3p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vmfi1"]
+_data = {
+&"RESET": SubResource("Animation_wmg3p"),
+&"default": SubResource("Animation_uid65")
+}
+
+[node name="HidingBush" type="Area2D"]
+script = ExtResource("1_wmg3p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -254)
+texture = SubResource("AtlasTexture_wmg3p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-30.5, -220.5)
+shape = SubResource("RectangleShape2D_vmfi1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vmfi1")
+}

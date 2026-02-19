@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfh8027b41fe1"]
+
+[ext_resource type="Script" uid="uid://cb5vexu06kdgn" path="res://UtilityPrefab/PureEnergy/pure_energy.gd" id="1_1rjua"]
+[ext_resource type="Texture2D" uid="uid://lxagvgpo7spj" path="res://Art/TreeHouse_SpriteAtlas.png" id="1_jgo30"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rjua"]
+atlas = ExtResource("1_jgo30")
+region = Rect2(1024, 398, 256, 256)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ur14r"]
+size = Vector2(222, 267)
+
+[node name="PureEnergy" type="Area2D"]
+script = ExtResource("1_1rjua")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -128)
+texture = SubResource("AtlasTexture_1rjua")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, -134.5)
+shape = SubResource("RectangleShape2D_ur14r")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
