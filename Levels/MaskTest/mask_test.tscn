@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://eyrv3jvw153w"]
+[gd_scene load_steps=11 format=3 uid="uid://eyrv3jvw153w"]
 
 [ext_resource type="Texture2D" uid="uid://cwwqbhigw3s6w" path="res://Art/Background.png" id="1_nihca"]
 [ext_resource type="Texture2D" uid="uid://4mda3mehcubd" path="res://Art/Ground.png" id="2_slmhy"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bfh8027b41fe1" path="res://UtilityPrefab/PureEnergy/pure_energy.tscn" id="6_84vcm"]
 [ext_resource type="PackedScene" uid="uid://ct2woa2cbfgm3" path="res://UtilityPrefab/HidingBush/hiding_bush.tscn" id="7_mvobm"]
 [ext_resource type="PackedScene" uid="uid://b5dykyrblsnr2" path="res://LivingThings/Animals/alien_prey.tscn" id="8_fpixt"]
+[ext_resource type="PackedScene" uid="uid://bdpgbcfhdvg32" path="res://UtilityPrefab/PauseMenu/pause_menu.tscn" id="8_m0pcj"]
 
 [sub_resource type="Curve2D" id="Curve2D_84vcm"]
 _data = {
@@ -91,3 +92,5 @@ rotation = -0.00490593
 disposition_table = Dictionary[int, int]({
 0: 6
 })
+
+[node name="PauseMenu" parent="." instance=ExtResource("8_m0pcj")]

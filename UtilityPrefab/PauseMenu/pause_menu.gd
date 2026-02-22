@@ -1,18 +1,20 @@
 extends CanvasLayer
 
-var is_paused = false
 
 func  _ready() -> void:
-	self.visible = false
+	visible = false
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
+	# Check if the action was JUST pressed (not held or released)
 	if event.is_action_pressed("ui_cancel"):
 		TogglePause()
+		# This tells Godot "I'm done with this event, don't pass it to anyone else"
+		get_viewport().set_input_as_handled()
 		
 func TogglePause():
-	is_paused = not is_paused
-	get_tree().paused = is_paused
-	self.visible = is_paused
+	print("toggle pause")
+	get_tree().paused = not get_tree().paused
+	visible = get_tree().paused
 
 func _on_restart_pressed() -> void:
 	get_tree().paused = false 
@@ -20,8 +22,7 @@ func _on_restart_pressed() -> void:
 
 
 func _on_resume_pressed() -> void:
-	self.visible = false
-	is_paused = false
+	visible = false
 	get_tree().paused = false
 	
 

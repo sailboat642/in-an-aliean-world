@@ -32,7 +32,7 @@ shape = SubResource("RectangleShape2D_d5q0u")
 [node name="DetectableArea" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DetectableArea"]
-polygon = PackedVector2Array(213, 14, 3024, 569, 3035, -723, 213, -378, -427, -375, -438, 7)
+polygon = PackedVector2Array(203, -5, 3024, 569, 3035, -723, 199, -260, -153, -267, -158, -3)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(1441, -196)

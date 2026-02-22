@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="InAnAlienWorld"
-run/main_scene="uid://18u6x2vg1ue5"
+run/main_scene="uid://ft83caffvdpn"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://Art/icon.svg"
 
@@ -22,6 +22,7 @@ buses/default_bus_layout=""
 [autoload]
 
 AudioManager="*res://Audio/Scripts/audio_manager.gd"
+SceneManager="*res://Globals/scene_manager.gd"
 
 [display]
 

@@ -2,6 +2,7 @@ extends Area2D
 
 var pulse_tween: Tween
 @onready var sprite = $Sprite2D
+@export var on_collect_scene: PackedScene
 # Called when the node enters the scene tree for the first time.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -12,7 +13,7 @@ func _ready() -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("player"):
 		print("You have Completed The Objective!")
-		get_tree().paused = true
+		SceneManager.switch_scene("res://Levels/level_complete.tscn")
 	pass # Replace with function body.
 
 func start_pulse_animation():

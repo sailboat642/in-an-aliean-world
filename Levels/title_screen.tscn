@@ -2,13 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://cwv6t7x2473so" path="res://Art/TitleBackground.png" id="1_frj5v"]
 [ext_resource type="Script" uid="uid://dy2wolbh732y4" path="res://Levels/title.gd" id="1_vn2h1"]
-[ext_resource type="PackedScene" uid="uid://eyrv3jvw153w" path="res://Levels/MaskTest/mask_test.tscn" id="2_g5eml"]
+[ext_resource type="PackedScene" uid="uid://18u6x2vg1ue5" path="res://Levels/StartScene/walk.tscn" id="2_vn2h1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_i1ewc"]
 font_size = 84
 font_color = Color(0.69803923, 0.43137255, 0.34901962, 1)
 
 [node name="TitleScreen" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,7 +17,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vn2h1")
-level_one = ExtResource("2_g5eml")
+level_one = ExtResource("2_vn2h1")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1

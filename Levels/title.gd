@@ -4,10 +4,13 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var stream = AudioManager.play_music("mx_menu")
-	AudioManager.set_loop(stream, true)
-
 
 
 
 func _on_play_pressed() -> void:
-	get_tree().change_scene_to_packed(level_one)
+	SceneManager.switch_scene("res://Levels/StartScene/walk.tscn")
+	
+
+func _on_controls_pressed() -> void:
+	#show controls
+	pass
