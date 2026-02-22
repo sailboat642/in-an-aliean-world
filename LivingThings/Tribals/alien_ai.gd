@@ -2,7 +2,7 @@ extends Area2D
 
 @export var lifeform_data:LifeForm 
 # this variable controls the graphics and animations
-@onready var behaviour = $AlienPreyBehaviour
+@onready var behaviour = $AlienBehaviour
 @onready var path_follow: PathFollow2D = get_parent() as PathFollow2D
 @onready var detectable_area: Area2D = $DetectableArea
 

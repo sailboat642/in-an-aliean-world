@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3mo6h8ua10cq"]
+[gd_scene load_steps=8 format=3 uid="uid://d3mo6h8ua10cq"]
 
 [ext_resource type="Script" uid="uid://cocw0knfbh0jt" path="res://LivingThings/Tribals/alien_ai.gd" id="1_cs015"]
 [ext_resource type="PackedScene" uid="uid://b4al8bexv0lok" path="res://LivingThings/Tribals/squarealien_behaviour.tscn" id="1_ucqck"]
@@ -6,6 +6,20 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vff5s"]
 size = Vector2(454, 400)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1lddo"]
+radius = 1066.1201
+
+[sub_resource type="Gradient" id="Gradient_1lddo"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vff5s"]
+gradient = SubResource("Gradient_1lddo")
+width = 3000
+height = 3000
+fill = 1
+fill_from = Vector2(0.47435898, 0.52136755)
+fill_to = Vector2(0.8226496, 0.35042736)
 
 [node name="SquareAlien" type="Area2D" groups=["aliens"]]
 script = ExtResource("1_cs015")
@@ -15,4 +29,18 @@ lifeform_data = ExtResource("2_1lddo")
 position = Vector2(-7, -190)
 shape = SubResource("RectangleShape2D_vff5s")
 
-[node name="SquareAlienBehaviour" parent="." instance=ExtResource("1_ucqck")]
+[node name="AlienBehaviour" parent="." instance=ExtResource("1_ucqck")]
+
+[node name="DetectableArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectableArea"]
+position = Vector2(0, -224)
+shape = SubResource("CircleShape2D_1lddo")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -204)
+energy = 0.4
+texture = SubResource("GradientTexture2D_vff5s")
+
+[connection signal="area_entered" from="DetectableArea" to="." method="on_area_entered_fov"]
+[connection signal="area_exited" from="DetectableArea" to="." method="on_area_exited_fov"]

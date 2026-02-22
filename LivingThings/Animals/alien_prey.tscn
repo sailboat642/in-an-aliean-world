@@ -23,7 +23,7 @@ fill_to = Vector2(0.007999999, 0.52)
 script = ExtResource("1_i4fmc")
 lifeform_data = ExtResource("2_d5q0u")
 
-[node name="AlienPreyBehaviour" parent="." instance=ExtResource("1_6e3rs")]
+[node name="AlienBehaviour" parent="." instance=ExtResource("1_6e3rs")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(22, -125)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://18u6x2vg1ue5"]
+[gd_scene load_steps=20 format=3 uid="uid://18u6x2vg1ue5"]
 
 [ext_resource type="Script" uid="uid://n1ywwghroli5" path="res://Levels/StartScene/start_scene.gd" id="1_ionnw"]
 [ext_resource type="PackedScene" uid="uid://cp7uwqqdciu45" path="res://Player/player.tscn" id="2_qycdm"]
@@ -7,12 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://cojem66fnmgll" path="res://Art/Hill.png" id="4_7q3oc"]
 [ext_resource type="Texture2D" uid="uid://22ufhor6ob1p" path="res://Art/SpaceShip.png" id="4_pakya"]
 [ext_resource type="Texture2D" uid="uid://lxagvgpo7spj" path="res://Art/TreeHouse_SpriteAtlas.png" id="7_caip6"]
-[ext_resource type="Texture2D" uid="uid://b2q01m3tsql7v" path="res://Art/BushesAndTrees.png" id="9_ionnw"]
-[ext_resource type="PackedScene" uid="uid://dmaxqjvvmojbq" path="res://Environment/tree.tscn" id="10_yxaaj"]
+[ext_resource type="PackedScene" uid="uid://ct2woa2cbfgm3" path="res://UtilityPrefab/HidingBush/hiding_bush.tscn" id="9_yxaaj"]
 [ext_resource type="PackedScene" uid="uid://d3mo6h8ua10cq" path="res://LivingThings/Tribals/square_alien.tscn" id="12_yxaaj"]
 [ext_resource type="PackedScene" uid="uid://b5dykyrblsnr2" path="res://LivingThings/Animals/alien_prey.tscn" id="13_ionnw"]
 [ext_resource type="PackedScene" uid="uid://bckm3b1ax1mx2" path="res://UtilityPrefab/PathSwitchGate/portal.tscn" id="13_m2t54"]
+[ext_resource type="PackedScene" uid="uid://bfh8027b41fe1" path="res://UtilityPrefab/PureEnergy/pure_energy.tscn" id="13_o0j25"]
 [ext_resource type="PackedScene" uid="uid://bdpgbcfhdvg32" path="res://UtilityPrefab/PauseMenu/pause_menu.tscn" id="14_ionnw"]
+[ext_resource type="PackedScene" uid="uid://1kdnurktfh6i" path="res://UtilityPrefab/MaskFuel/mask_fuel.tscn" id="14_ygvuh"]
 
 [sub_resource type="Curve2D" id="Curve2D_epvrj"]
 _data = {
@@ -22,15 +23,27 @@ point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_f4nto"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 15, 7815, 0, 0, 0, 0, 1768, 7953, 0, 0, 0, 0, 3307, 8503, 0, 0, 0, 0, 5206, 8755)
+"points": PackedVector2Array(0, 0, 0, 0, 15, 7815, -536.5358, -194.80379, 536.5358, 194.80379, 1768, 7953, -330.1759, -99.05277, 330.1759, 99.05277, 3307, 8503, 0, 0, 0, 0, 5206, 8755)
 }
 point_count = 4
 
 [sub_resource type="Curve2D" id="Curve2D_jws6r"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 27, 10434, 0, 0, 0, 0, 1965, 10763, 0, 0, 0, 0, 3170, 10865, 0, 0, 0, 0, 5198, 11280, 0, 0, 0, 0, 5609, 11502, 0, 0, 0, 0, 7736, 11495, 0, 0, 0, 0, 22144, 11498)
+"points": PackedVector2Array(0, 0, 0, 0, 27, 10434, -288.55972, 58.613693, 288.55972, -58.613693, 3170, 10865, -234.45477, -142.02548, 234.45477, 142.02548, 5198, 11280, 0, 0, 0, 0, 5609, 11502, -220.94429, -2.672713, 220.94429, 2.672713, 7721, 11676, 0, 0, 0, 0, 18727, 11523, 0, 0, 0, 0, 22171, 11360)
 }
 point_count = 7
+
+[sub_resource type="Curve2D" id="Curve2D_yxaaj"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 6536, 11605, 0, 0, 0, 0, 8588, 11631)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_m2t54"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 17491, 11691, 0, 0, 0, 0, 14325, 11612, 0, 0, 0, 0, 12543, 11805, 0, 0, 0, 0, 12910, 11977)
+}
+point_count = 4
 
 [node name="Walk" type="Node2D"]
 script = ExtResource("1_ionnw")
@@ -51,16 +64,6 @@ position = Vector2(1306, 1145)
 position = Vector2(1744, 7338)
 scale = Vector2(14.746469, 14.746469)
 texture = ExtResource("4_7q3oc")
-
-[node name="Tree" parent="Graphics" instance=ExtResource("10_yxaaj")]
-position = Vector2(16803.002, 10351)
-
-[node name="Tree2" parent="Graphics" instance=ExtResource("10_yxaaj")]
-position = Vector2(14426.002, 10417)
-
-[node name="Tree3" parent="Graphics" instance=ExtResource("10_yxaaj")]
-position = Vector2(10085, 10830)
-scale = Vector2(5.4183955, 5.4183955)
 
 [node name="Terrain" type="Node2D" parent="."]
 position = Vector2(7972, 11509.999)
@@ -156,21 +159,45 @@ position = Vector2(27, 10434)
 rotates = false
 loop = false
 
+[node name="AlienPaths" type="Node2D" parent="."]
+
+[node name="SquareAlien" parent="AlienPaths" instance=ExtResource("12_yxaaj")]
+position = Vector2(14885, 11769)
+
+[node name="SquareAlien2" parent="AlienPaths" instance=ExtResource("12_yxaaj")]
+position = Vector2(13713, 11598)
+
+[node name="SquareAlien3" parent="AlienPaths" instance=ExtResource("12_yxaaj")]
+position = Vector2(18182, 11639)
+disposition_table = Dictionary[int, int]({
+0: 6
+})
+
+[node name="Path2D" type="Path2D" parent="AlienPaths"]
+curve = SubResource("Curve2D_yxaaj")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="AlienPaths/Path2D"]
+position = Vector2(6536, 11605)
+rotation = 0.012669887
+
+[node name="AlienPrey" parent="AlienPaths/Path2D/PathFollow2D" instance=ExtResource("13_ionnw")]
+rotation = -0.012669888
+scale = Vector2(1.0000001, 1.0000001)
+
+[node name="Path2D2" type="Path2D" parent="AlienPaths"]
+curve = SubResource("Curve2D_m2t54")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="AlienPaths/Path2D2"]
+position = Vector2(17491, 11691)
+rotation = -3.116645
+
+[node name="AlienPrey2" parent="AlienPaths/Path2D2/PathFollow2D" instance=ExtResource("13_ionnw")]
+rotation = 3.116645
+
 [node name="PlaceHolders" type="Node2D" parent="."]
 
-[node name="Sqaure Bush" type="Polygon2D" parent="PlaceHolders"]
-position = Vector2(2776.7842, 9547)
-scale = Vector2(1.8367916, 1.2760023)
-texture = ExtResource("9_ionnw")
-polygon = PackedVector2Array(1268.0895, 1522.4045, 1268.0895, 1055.3783, 1856.5426, 1062.8507, 1856.5426, 1598.9968, 1268.0895, 1608.3374)
-uv = PackedVector2Array(1268.0895, 1522.4045, 1268.0895, 1055.3783, 1856.5426, 1062.8507, 1856.5426, 1598.9968, 1268.0895, 1608.3374)
-
-[node name="TriangleBush" type="Polygon2D" parent="PlaceHolders"]
-position = Vector2(5281.784, 9549)
-scale = Vector2(1.2812357, 1.2812357)
-texture = ExtResource("9_ionnw")
-polygon = PackedVector2Array(458.4118, 1546.1946, 835.02545, 932.2758, 1218.3644, 1588.4675, 454.5688, 1583.6638, 452.6473, 1556.7627)
-uv = PackedVector2Array(458.4118, 1546.1946, 835.02545, 932.2758, 1218.3644, 1588.4675, 454.5688, 1583.6638, 452.6473, 1556.7627)
+[node name="HidingBush" parent="PlaceHolders" instance=ExtResource("9_yxaaj")]
+position = Vector2(6035, 11498)
 
 [node name="GraphicsFront" type="Node2D" parent="."]
 
@@ -178,17 +205,11 @@ uv = PackedVector2Array(458.4118, 1546.1946, 835.02545, 932.2758, 1218.3644, 158
 
 [node name="Gates" type="Node2D" parent="."]
 
-[node name="SquareAlien" parent="." instance=ExtResource("12_yxaaj")]
-position = Vector2(14885, 11769)
+[node name="PureEnergy" parent="." instance=ExtResource("13_o0j25")]
+position = Vector2(22037, 11366)
 
-[node name="SquareAlien2" parent="." instance=ExtResource("12_yxaaj")]
-position = Vector2(13713, 11598)
+[node name="MaskFuel" parent="." instance=ExtResource("14_ygvuh")]
+position = Vector2(16523, 11586)
 
-[node name="SquareAlien3" parent="." instance=ExtResource("12_yxaaj")]
-position = Vector2(18182, 11639)
-
-[node name="AlienPrey" parent="." instance=ExtResource("13_ionnw")]
-position = Vector2(8513, 11490)
-
-[node name="AlienPrey2" parent="." instance=ExtResource("13_ionnw")]
-position = Vector2(16130, 11561)
+[node name="MaskFuel2" parent="." instance=ExtResource("14_ygvuh")]
+position = Vector2(10522, 11569)
