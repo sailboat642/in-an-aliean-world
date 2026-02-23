@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 res://LivingThings/Tribals/alien.gd
 res://Audio/Scripts/audio_manager.gd
 res://LivingThings/Tribals/triangle_alien.tscn
@@ -8,3 +9,8 @@ res://LivingThings/Tribals/circle_alien.tscn
 res://Levels/TitleScene/title.gd
 res://Player/player.tscn
 res://Player/PlayerMovement.gd
+=======
+res://Player/player_graphics.tscn
+res://LivingThings/Tribals/alien_behaviour.gd
+res://LivingThings/Tribals/squarealien_behaviour.tscn
+>>>>>>> Stashed changes
