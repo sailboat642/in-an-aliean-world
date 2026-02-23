@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://d3mo6h8ua10cq"]
 
-[ext_resource type="Script" uid="uid://cocw0knfbh0jt" path="res://LivingThings/Tribals/alien_ai.gd" id="1_cs015"]
+[ext_resource type="Script" uid="uid://cocw0knfbh0jt" path="res://LivingThings/alien_ai.gd" id="1_cs015"]
 [ext_resource type="PackedScene" uid="uid://b4al8bexv0lok" path="res://LivingThings/Tribals/squarealien_behaviour.tscn" id="1_ucqck"]
 [ext_resource type="Resource" uid="uid://cqfe0n34lwni4" path="res://LivingThings/Tribals/squarealien_form.tres" id="2_1lddo"]
 

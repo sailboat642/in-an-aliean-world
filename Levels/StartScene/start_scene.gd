@@ -1,7 +1,7 @@
 extends Node2D
 
-
+var camera: Camera2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	AudioManager.play_music("mx_tutorial")
-	
+	camera = get_viewport().get_camera_2d()

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://b5dykyrblsnr2"]
 
 [ext_resource type="PackedScene" uid="uid://c77albtcw6421" path="res://LivingThings/Animals/alienprey_behaviour.tscn" id="1_6e3rs"]
-[ext_resource type="Script" uid="uid://cocw0knfbh0jt" path="res://LivingThings/Tribals/alien_ai.gd" id="1_i4fmc"]
+[ext_resource type="Script" uid="uid://cocw0knfbh0jt" path="res://LivingThings/alien_ai.gd" id="1_i4fmc"]
 [ext_resource type="Resource" uid="uid://if00f0epls1x" path="res://LivingThings/Animals/alienprey_form.tres" id="2_d5q0u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d5q0u"]
@@ -32,7 +32,8 @@ shape = SubResource("RectangleShape2D_d5q0u")
 [node name="DetectableArea" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DetectableArea"]
-polygon = PackedVector2Array(203, -5, 3024, 569, 3035, -723, 199, -260, -153, -267, -158, -3)
+position = Vector2(976.5143, -115.997765)
+polygon = PackedVector2Array(-773.5143, 110.997765, 2047.4856, 684.99774, 2058.4856, -607.00226, -777.5143, -144.00223, -1129.5144, -151.00223, -1134.5144, 112.997765)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(1441, -196)

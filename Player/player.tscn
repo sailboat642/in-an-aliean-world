@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cp7uwqqdciu45"]
+[gd_scene load_steps=6 format=3 uid="uid://cp7uwqqdciu45"]
 
 [ext_resource type="Script" uid="uid://dc7xv3cemi7wv" path="res://Player/PlayerMovement.gd" id="1_4ntmi"]
 [ext_resource type="Resource" uid="uid://4otg52ocahg5" path="res://Player/player_form.tres" id="2_fhl08"]
-[ext_resource type="PackedScene" uid="uid://bdpgbcfhdvg32" path="res://UtilityPrefab/PauseMenu/pause_menu.tscn" id="3_btcbx"]
 [ext_resource type="PackedScene" uid="uid://s0mpnhxk6p8y" path="res://Player/player_graphics.tscn" id="3_gwnis"]
 [ext_resource type="PackedScene" uid="uid://mukv4iusye5" path="res://Player/mask.tscn" id="4_gwnis"]
 
@@ -15,13 +14,6 @@ collision_mask = 0
 script = ExtResource("1_4ntmi")
 speed = 600.0
 current_lifeform_data = ExtResource("2_fhl08")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(0, -1200)
-zoom = Vector2(0.3, 0.3)
-
-[node name="PauseMenu" parent="Camera2D" instance=ExtResource("3_btcbx")]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -209.99997)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://b4al8bexv0lok"]
 
-[ext_resource type="Script" uid="uid://bl42hrajlor8n" path="res://LivingThings/Tribals/alien_behaviour.gd" id="1_1bfub"]
+[ext_resource type="Script" uid="uid://bl42hrajlor8n" path="res://LivingThings/alien_behaviour.gd" id="1_1bfub"]
 [ext_resource type="Texture2D" uid="uid://mws7st5lmgxo" path="res://Art/Square_Alien_Texture_Atlas.png" id="2_d66c0"]
 
 [sub_resource type="Animation" id="Animation_pylcg"]

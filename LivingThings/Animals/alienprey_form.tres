@@ -9,4 +9,9 @@ script = ExtResource("1_va2b5")
 form_name = 4
 UI_Icon = ExtResource("1_qw13e")
 form_behaviour = ExtResource("2_e6qtk")
+flee_conditions = Dictionary[int, int]({
+0: 5,
+3: 1,
+4: 1
+})
 metadata/_custom_type_script = "uid://d01pbm672ibjm"

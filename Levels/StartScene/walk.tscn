@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://18u6x2vg1ue5"]
+[gd_scene load_steps=20 format=3 uid="uid://18u6x2vg1ue5"]
 
 [ext_resource type="Script" uid="uid://n1ywwghroli5" path="res://Levels/StartScene/start_scene.gd" id="1_ionnw"]
 [ext_resource type="PackedScene" uid="uid://cp7uwqqdciu45" path="res://Player/player.tscn" id="2_qycdm"]
@@ -11,9 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://d3mo6h8ua10cq" path="res://LivingThings/Tribals/square_alien.tscn" id="12_yxaaj"]
 [ext_resource type="PackedScene" uid="uid://b5dykyrblsnr2" path="res://LivingThings/Animals/alien_prey.tscn" id="13_ionnw"]
 [ext_resource type="PackedScene" uid="uid://bckm3b1ax1mx2" path="res://UtilityPrefab/PathSwitchGate/portal.tscn" id="13_m2t54"]
-[ext_resource type="PackedScene" uid="uid://bfh8027b41fe1" path="res://UtilityPrefab/PureEnergy/pure_energy.tscn" id="13_o0j25"]
 [ext_resource type="PackedScene" uid="uid://bdpgbcfhdvg32" path="res://UtilityPrefab/PauseMenu/pause_menu.tscn" id="14_ionnw"]
-[ext_resource type="PackedScene" uid="uid://cn62xa4s3bpd8" path="res://Levels/level_complete.tscn" id="14_o0j25"]
+[ext_resource type="Script" uid="uid://ckbjkfiglfkb1" path="res://Scripts/camera.gd" id="14_o0j25"]
 [ext_resource type="PackedScene" uid="uid://1kdnurktfh6i" path="res://UtilityPrefab/MaskFuel/mask_fuel.tscn" id="14_ygvuh"]
 
 [sub_resource type="Curve2D" id="Curve2D_epvrj"]
@@ -170,9 +169,6 @@ position = Vector2(13713, 11598)
 
 [node name="SquareAlien3" parent="AlienPaths" instance=ExtResource("12_yxaaj")]
 position = Vector2(18182, 11639)
-disposition_table = Dictionary[int, int]({
-0: 6
-})
 
 [node name="Path2D" type="Path2D" parent="AlienPaths"]
 curve = SubResource("Curve2D_yxaaj")
@@ -206,10 +202,6 @@ position = Vector2(6035, 11498)
 
 [node name="Gates" type="Node2D" parent="."]
 
-[node name="PureEnergy" parent="." instance=ExtResource("13_o0j25")]
-position = Vector2(22037, 11366)
-on_collect_scene = ExtResource("14_o0j25")
-
 [node name="MaskFuel" parent="." instance=ExtResource("14_ygvuh")]
 position = Vector2(16523, 11586)
 
@@ -217,3 +209,14 @@ position = Vector2(16523, 11586)
 position = Vector2(10522, 11569)
 
 [node name="PauseMenu2" parent="." instance=ExtResource("14_ionnw")]
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+offset = Vector2(0, -1000)
+zoom = Vector2(0.4, 0.4)
+limit_left = 0
+limit_top = 0
+limit_bottom = 300000
+position_smoothing_enabled = true
+position_smoothing_speed = 25.0
+script = ExtResource("14_o0j25")
+target = NodePath("../Paths/HillPath/PlayerPathFollow/Player")

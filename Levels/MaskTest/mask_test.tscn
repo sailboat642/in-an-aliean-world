@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://eyrv3jvw153w"]
+[gd_scene load_steps=10 format=3 uid="uid://eyrv3jvw153w"]
 
 [ext_resource type="Texture2D" uid="uid://cwwqbhigw3s6w" path="res://Art/Background.png" id="1_nihca"]
 [ext_resource type="Texture2D" uid="uid://4mda3mehcubd" path="res://Art/Ground.png" id="2_slmhy"]
 [ext_resource type="PackedScene" uid="uid://cp7uwqqdciu45" path="res://Player/player.tscn" id="3_jr7n8"]
 [ext_resource type="PackedScene" uid="uid://1kdnurktfh6i" path="res://UtilityPrefab/MaskFuel/mask_fuel.tscn" id="5_jr7n8"]
-[ext_resource type="PackedScene" uid="uid://bfh8027b41fe1" path="res://UtilityPrefab/PureEnergy/pure_energy.tscn" id="6_84vcm"]
 [ext_resource type="PackedScene" uid="uid://ct2woa2cbfgm3" path="res://UtilityPrefab/HidingBush/hiding_bush.tscn" id="7_mvobm"]
 [ext_resource type="PackedScene" uid="uid://b5dykyrblsnr2" path="res://LivingThings/Animals/alien_prey.tscn" id="8_fpixt"]
 [ext_resource type="PackedScene" uid="uid://bdpgbcfhdvg32" path="res://UtilityPrefab/PauseMenu/pause_menu.tscn" id="8_m0pcj"]
@@ -59,9 +58,6 @@ position = Vector2(6793, 4707)
 [node name="MaskFuel2" parent="." instance=ExtResource("5_jr7n8")]
 position = Vector2(7407, 4670)
 
-[node name="PureEnergy" parent="." instance=ExtResource("6_84vcm")]
-position = Vector2(9102, 4663)
-
 [node name="HidingBush" parent="." instance=ExtResource("7_mvobm")]
 position = Vector2(1081, 4685)
 
@@ -80,6 +76,10 @@ loop = false
 speed = 800.0
 path_follow = NodePath("..")
 
+[node name="Camera2D" type="Camera2D" parent="Paths/Path2D/PlayerPath/Player"]
+offset = Vector2(0, -750)
+zoom = Vector2(0.4, 0.4)
+
 [node name="Path2D2" type="Path2D" parent="Paths"]
 curve = SubResource("Curve2D_mvobm")
 
@@ -89,8 +89,5 @@ rotation = 0.00490593
 
 [node name="AlienPrey" parent="Paths/Path2D2/PathFollow2D" instance=ExtResource("8_fpixt")]
 rotation = -0.00490593
-disposition_table = Dictionary[int, int]({
-0: 6
-})
 
 [node name="PauseMenu" parent="." instance=ExtResource("8_m0pcj")]

@@ -1,7 +1,6 @@
 extends Area2D
 
 @export var lifeform_data:LifeForm 
-# this variable controls the graphics and animations
 @onready var behaviour = $AlienBehaviour
 @onready var path_follow: PathFollow2D = get_parent() as PathFollow2D
 @onready var detectable_area: Area2D = $DetectableArea
@@ -20,13 +19,7 @@ var moving_forward: bool = true
 var is_waiting: bool = false
 var current_station_idx: int = 0
 
-# Alien Response System
-@export var disposition_table: Dictionary[LifeForm.Species, LifeForm.Action] = {
-	LifeForm.Species.PLAYER	: LifeForm.Action.ALL,
-	LifeForm.Species.ALIEN_PREY: LifeForm.Action.ALARM,
-	LifeForm.Species.ALIEN_PREDATOR: LifeForm.Action.ALARM
-}
-
+signal action_performed(alien_type: LifeForm.Species, action: LifeForm.Action)
 
 func _ready() -> void:
 	if not path_follow:
@@ -119,34 +112,37 @@ func get_path_length() -> float:
 	
 func on_area_entered_fov(area):
 	if area.is_in_group("aliens"):
-		print("lifeform detected")
 		var lifeform_data = area.get_lifeform_data()
 		react(area, lifeform_data.form_name, LifeForm.Action.ALL)
 		
-	if area.is_in_group("player"):	
-		print("player detected")
+	if area.is_in_group("player"):
 		var player_formdata = area.get_lifeform_data() as LifeForm
 		react(area, player_formdata.form_name, LifeForm.Action.ALL)
 		
 
 func react(character, species: LifeForm.Species, action: LifeForm.Action):
-	if disposition_table.has(species):
-		if disposition_table[species] == action:
+	if lifeform_data.flee_conditions.has(species):
+		if lifeform_data.flee_conditions[species] == action:
 			flee(character)
 			return
-	print("seems okay")
+	
+	elif lifeform_data.chase_conditions.has(species):
+		if lifeform_data.chase_conditions[species] == action:
+			chase(character)
+			return
 
 
 func flee(antagonizer: Node2D) -> void:
 	if current_state == State.FLEE: return
 	
 	target_node = antagonizer
-	current_state = State.FLEE
-	behaviour.alarm() # Trigger animation [cite: 2]
 	
+	behaviour.alarm() # Trigger animation [cite: 2]
+	await behaviour.get_node("AnimationPlayer").animation_finished
 	# Emit signal with name for the UI/Log
 	# behaviour.action_performed.emit(LifeForm.Action.ALARM, lifeform_data.form_name)
-	
+	current_state = State.FLEE
+	print("running away")
 	# Wait 6 seconds, then vanish
 	await get_tree().create_timer(6.0).timeout
 	queue_free()
@@ -157,30 +153,39 @@ func _process_flee(delta: float) -> void:
 	# Calculate direction away from target
 	var dir = (global_position - target_node.global_position).normalized()
 	global_position = Vector2(global_position.x + dir.x * (speed * 1.5) * delta, global_position.y) # Run faster than walk speed
-	
+	behaviour.walk()
 	# Update Facing
 	scale.x = abs(scale.x) if dir.x > 0 else -abs(scale.x)
 
 func chase(target: Node2D) -> void:
 	target_node = target
+	
+	behaviour.alarm()
+	await behaviour.get_node("AnimationPlayer").animation_finished
 	current_state = State.CHASE
-	behaviour.alarm() # Or a specific ACTION_A for aggressive [cite: 2]
+
+func get_chase_target() -> Node2D:
+	return target_node
 
 func _process_chase(delta: float) -> void:
 	if not target_node: return
 	
 	var dir = (target_node.global_position - global_position).normalized()
-	global_position += dir * speed * delta
+	global_position += dir * speed * 1.5 * delta
 	
 	# Update Facing
 	scale.x = abs(scale.x) if dir.x > 0 else -abs(scale.x)
+	behaviour.walk()
 	
 	# Check for 'Lose' condition (Simple distance check or use a hit Area2D)
-	if global_position.distance_to(target_node.global_position) < 20.0:
+	if global_position.distance_to(target_node.global_position) < 150.0:
+		
 		handle_player_loss()
 
 func handle_player_loss():
 	current_state = State.DEAD
+	behaviour.alarm()
+	await behaviour.get_node("AnimationPlayer").animation_finished
 	print("Game Over: Caught by ", LifeForm.Species.find_key(lifeform_data.form_name))
 	# SceneTree.change_scene_to_file("res://game_over.tscn")
 

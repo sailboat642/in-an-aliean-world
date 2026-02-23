@@ -6,16 +6,20 @@ func _ready() -> void:
 	
 # tell if it is moving up or down the
 func walk() -> void:
-	$AnimationPlayer.reset_section()
 	$AnimationPlayer.play("walk")
 	
 func idle() -> void:
-	$AnimationPlayer.play("RESET")
-	$AnimationPlayer.play("idle")
+	play_safe("idle")
 	
 func alarm() -> void:
-	$AnimationPlayer.reset_section()
-	$AnimationPlayer.play("alarm")
+	play_safe("alarm")
+
+# Inside alien_behaviour.gd
+func play_safe(anim_name: String):
+	# Snap everything to rest pose first
+	$AnimationPlayer.play("RESET")
+	$AnimationPlayer.advance(0) # Force the reset to apply immediately
+	$AnimationPlayer.play(anim_name)
 
 func get_animation_player() -> AnimationPlayer:
 	return $AnimationPlayer

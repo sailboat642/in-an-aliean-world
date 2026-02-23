@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://l4f372ay6xri"]
 
 [ext_resource type="PackedScene" uid="uid://cp7uwqqdciu45" path="res://Player/player.tscn" id="1_rnx6m"]
-[ext_resource type="PackedScene" uid="uid://bkahutq8mqldb" path="res://LivingThings/Tribals/Fresh/circlealien_behaviour.tscn" id="2_4c7p8"]
+[ext_resource type="PackedScene" uid="uid://bkahutq8mqldb" path="res://LivingThings/Tribals/circlealien_behaviour.tscn" id="2_4c7p8"]
 [ext_resource type="Texture2D" uid="uid://4mda3mehcubd" path="res://Art/Ground.png" id="2_k7a55"]
 
 [sub_resource type="Curve2D" id="Curve2D_4c7p8"]

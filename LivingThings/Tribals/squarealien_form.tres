@@ -9,4 +9,8 @@ script = ExtResource("1_jeabp")
 form_name = 3
 UI_Icon = ExtResource("1_dppo4")
 form_behaviour = ExtResource("2_ygtmf")
+chase_conditions = Dictionary[int, int]({
+0: 5,
+3: 1
+})
 metadata/_custom_type_script = "uid://d01pbm672ibjm"

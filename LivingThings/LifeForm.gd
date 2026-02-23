@@ -7,8 +7,10 @@ enum Species {
 	CIRCLE_ALIEN, TRIANGLE_ALIEN, SQUARE_ALIEN,
 	ALIEN_PREY, ALIEN_PREDATOR
 }
-enum Action { IDLE, WALKING, ALARM, ACTION_A, ACTION_B, EMOTE, ALL }
+enum Action {TRANSFORM, ALARM, ACTION_A, ACTION_B, EMOTE, ALL }
 
 @export var form_name: Species 
 @export var UI_Icon: Texture2D
 @export var form_behaviour: PackedScene
+@export var flee_conditions: Dictionary[LifeForm.Species, LifeForm.Action] 
+@export var chase_conditions: Dictionary[LifeForm.Species, LifeForm.Action] 

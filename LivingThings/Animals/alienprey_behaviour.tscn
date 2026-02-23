@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://c77albtcw6421"]
 
 [ext_resource type="Texture2D" uid="uid://tgbroi6q0fu5" path="res://Art/AlienPrey_SpriteAtlas.png" id="1_pokf3"]
-[ext_resource type="Script" uid="uid://bl42hrajlor8n" path="res://LivingThings/Tribals/alien_behaviour.gd" id="1_v65lx"]
+[ext_resource type="Script" uid="uid://bl42hrajlor8n" path="res://LivingThings/alien_behaviour.gd" id="1_v65lx"]
 
 [sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_pokf3"]
 target_nodepath = NodePath("../IKTargets/BackLergTarget")
@@ -43,7 +43,7 @@ joint_data/1/bone_index = 7
 joint_data/1/bone2d_node = NodePath("Hip/Body/Chest/Shoulder/FrontLeg")
 joint_data/1/rotate_from_joint = false
 joint_data/1/enable_constraint = true
-joint_data/1/constraint_angle_min = 173.27792
+joint_data/1/constraint_angle_min = 173.27791
 joint_data/1/constraint_angle_max = 282.324
 joint_data/1/constraint_angle_invert = true
 joint_data/1/constraint_in_localspace = true
@@ -53,7 +53,7 @@ joint_data/2/bone2d_node = NodePath("Hip/Body/Chest/Shoulder/FrontLeg/Knee")
 joint_data/2/rotate_from_joint = false
 joint_data/2/enable_constraint = true
 joint_data/2/constraint_angle_min = 8.842
-joint_data/2/constraint_angle_max = -189.70894
+joint_data/2/constraint_angle_max = -189.70892
 joint_data/2/constraint_angle_invert = false
 joint_data/2/constraint_in_localspace = true
 joint_data/2/editor_draw_gizmo = true
@@ -1261,7 +1261,7 @@ rest = Transform2D(1, 0, 0, 1, 22, -13)
 [node name="Shoulder" type="Bone2D" parent="Skeleton2D/Hip/Body/Chest"]
 position = Vector2(9.019119, 22.114304)
 rotation = -0.07243187
-scale = Vector2(0.99995404, 0.99995404)
+scale = Vector2(0.9999539, 0.9999539)
 rest = Transform2D(1, 0, 0, 1, 9, 22)
 
 [node name="FrontLeg" type="Bone2D" parent="Skeleton2D/Hip/Body/Chest/Shoulder"]

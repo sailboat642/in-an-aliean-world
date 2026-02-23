@@ -9,4 +9,13 @@ script = ExtResource("1_ipgon")
 form_name = 5
 UI_Icon = ExtResource("1_ayh8e")
 form_behaviour = ExtResource("2_cknvl")
+flee_conditions = Dictionary[int, int]({
+1: 1,
+2: 1,
+3: 1
+})
+chase_conditions = Dictionary[int, int]({
+0: 5,
+5: 1
+})
 metadata/_custom_type_script = "uid://d01pbm672ibjm"
