@@ -44,7 +44,7 @@ func _process(delta)->void:
 			charges -= 1
 			_update_resource_ui()
 		
-	elif (Input.is_action_just_pressed("revert") and is_player_disguised):
+	elif (Input.is_action_just_pressed("transform") and is_player_disguised):
 		load_lifeform(player_lifeform_data)
 		is_player_disguised = false
 		

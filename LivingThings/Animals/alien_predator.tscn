@@ -12,7 +12,7 @@ size = Vector2(556, 440)
 script = ExtResource("1_hraud")
 lifeform_data = ExtResource("2_u3c1i")
 
-[node name="AlienPredatorBehaviour" parent="." instance=ExtResource("1_xoitl")]
+[node name="AlienBehaviour" parent="." instance=ExtResource("1_xoitl")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(26, -210)

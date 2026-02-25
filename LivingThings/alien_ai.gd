@@ -137,9 +137,10 @@ func flee(antagonizer: Node2D) -> void:
 	if current_state == State.FLEE: return
 	
 	target_node = antagonizer
-	
-	behaviour.alarm() # Trigger animation [cite: 2]
-	await behaviour.get_node("AnimationPlayer").animation_finished
+	print("alarmed")
+	current_state = State.DEAD
+	behaviour.alarm() 
+	await behaviour.get_animation_player().animation_finished
 	# Emit signal with name for the UI/Log
 	# behaviour.action_performed.emit(LifeForm.Action.ALARM, lifeform_data.form_name)
 	current_state = State.FLEE

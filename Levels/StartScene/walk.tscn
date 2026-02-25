@@ -228,10 +228,7 @@ target = NodePath("../Paths/HillPath/PlayerPathFollow/Player")
 position = Vector2(21902, 11300)
 
 [node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("focus_target", "preview_target")]
-visible = false
 position = Vector2(4167, 5197)
-monitoring = false
-monitorable = false
 script = ExtResource("16_n5fr5")
 zone_zoom = Vector2(0.8, 0.8)
 focus_target = NodePath("../AlienPaths/SquareAlien3")

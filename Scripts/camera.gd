@@ -7,6 +7,9 @@ extends Camera2D
 @export var target: Node2D
 var is_zooming := false
 
+func _ready():
+	zoom = Vector2(0.4, 0.4)
+
 func _process(delta):
 	if is_zooming:
 		zoom = zoom.lerp(target_zoom, zoom_speed * delta)

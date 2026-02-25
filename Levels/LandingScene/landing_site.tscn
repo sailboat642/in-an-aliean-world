@@ -1,0 +1,212 @@
+[gd_scene load_steps=17 format=3 uid="uid://bxgig7xu43suf"]
+
+[ext_resource type="Texture2D" uid="uid://brxv0uvowkbju" path="res://Art/ForrestEnvironment-1.png" id="1_byrkh"]
+[ext_resource type="Script" uid="uid://n1ywwghroli5" path="res://Levels/StartScene/start_scene.gd" id="1_fachv"]
+[ext_resource type="Texture2D" uid="uid://cteox7cg6dnfa" path="res://Art/ForrestEnvironment-2.png" id="2_gdvm8"]
+[ext_resource type="Texture2D" uid="uid://dm2idksxmneui" path="res://Art/ForrestEnvironment-3.png" id="3_nih6v"]
+[ext_resource type="Texture2D" uid="uid://dacu220xiwlpi" path="res://Art/ForrestEnvironment-4.png" id="4_fachv"]
+[ext_resource type="PackedScene" uid="uid://cp7uwqqdciu45" path="res://Player/player.tscn" id="5_nih6v"]
+[ext_resource type="Texture2D" uid="uid://de6r8lm5qlkfx" path="res://Art/ForrestEnvironment-5.png" id="5_tt302"]
+[ext_resource type="PackedScene" uid="uid://ct2woa2cbfgm3" path="res://UtilityPrefab/HidingBush/hiding_bush.tscn" id="6_xnbwy"]
+[ext_resource type="Script" uid="uid://ckbjkfiglfkb1" path="res://Scripts/camera.gd" id="7_fachv"]
+[ext_resource type="PackedScene" uid="uid://b5dykyrblsnr2" path="res://LivingThings/Animals/alien_prey.tscn" id="8_tt302"]
+[ext_resource type="PackedScene" uid="uid://c1rbx0e4d5iac" path="res://LivingThings/Animals/alien_predator.tscn" id="11_w7diu"]
+
+[sub_resource type="Curve2D" id="Curve2D_tt302"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -11529, 1651, 0, 0, 0, 0, -7553, 1624, 0, 0, 0, 0, 9244, 1676, 0, 0, 0, 0, 19176, 1693)
+}
+point_count = 4
+
+[sub_resource type="Curve2D" id="Curve2D_xnbwy"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 11968, 3720, 0, 0, 0, 0, 8309, 3811, 0, 0, 0, 0, 16037, 3897)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_w7diu"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 18637, 3870, 0, 0, 0, 0, 22047, 3860)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_3fudu"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 23948, 3794, 0, 0, 0, 0, 27540, 3870)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_t04p3"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 37966, 4122, 150.381, -183.799, -150.381, 183.799, 41675, 4101, 41.7725, -279.87573, -41.7725, 279.87573, 40184, 4255, 0, 0, 0, 0, 44837, 4101)
+}
+point_count = 4
+
+[node name="LandingSite" type="Node2D"]
+script = ExtResource("1_fachv")
+
+[node name="Background" type="Parallax2D" parent="."]
+scale = Vector2(1.8729979, 1.8729979)
+repeat_size = Vector2(3840, 0)
+repeat_times = 3
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+offset_right = 3850.0
+offset_bottom = 2224.0
+color = Color(0.69411767, 0.6039216, 0.6862745, 1)
+
+[node name="ParallaxLayer3" type="Parallax2D" parent="."]
+scale = Vector2(2, 2)
+scroll_scale = Vector2(0.2, 1)
+scroll_offset = Vector2(244, -70)
+repeat_size = Vector2(5000, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxLayer3"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_byrkh")
+
+[node name="ParallaxLayer2" type="Parallax2D" parent="."]
+scale = Vector2(2, 2)
+scroll_scale = Vector2(0.3, 1)
+repeat_size = Vector2(3840, 0)
+repeat_times = 3
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxLayer2"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_gdvm8")
+
+[node name="ParallaxLayer1" type="Parallax2D" parent="."]
+scale = Vector2(2, 2)
+scroll_scale = Vector2(0.8, 1)
+repeat_size = Vector2(3840, 0)
+repeat_times = 4
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxLayer1"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_nih6v")
+
+[node name="ParallaxLayerGround" type="Parallax2D" parent="."]
+scroll_offset = Vector2(0, 2150)
+repeat_size = Vector2(3840, 0)
+repeat_times = 13
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxLayerGround"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_fachv")
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="HidingBush" parent="Objects" instance=ExtResource("6_xnbwy")]
+position = Vector2(20314, 3785)
+
+[node name="HidingBush2" parent="Objects" instance=ExtResource("6_xnbwy")]
+position = Vector2(34548, 3827)
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(11517, 2150)
+curve = SubResource("Curve2D_tt302")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-11529, 1651)
+rotation = -0.00679064
+rotates = false
+loop = false
+
+[node name="Player" parent="Path2D/PathFollow2D" node_paths=PackedStringArray("path_follow") instance=ExtResource("5_nih6v")]
+path_follow = NodePath("..")
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+position = Vector2(32, 1635)
+zoom = Vector2(0.4, 0.4)
+limit_top = 0
+limit_bottom = 4160
+script = ExtResource("7_fachv")
+target = NodePath("../Path2D/PathFollow2D/Player")
+
+[node name="AlienPaths" type="Node2D" parent="."]
+
+[node name="Path2D2" type="Path2D" parent="AlienPaths"]
+curve = SubResource("Curve2D_xnbwy")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="AlienPaths/Path2D2"]
+position = Vector2(11968, 3720)
+rotates = false
+loop = false
+
+[node name="AlienPrey" parent="AlienPaths/Path2D2/PathFollow2D" instance=ExtResource("8_tt302")]
+
+[node name="Path2D" type="Path2D" parent="AlienPaths"]
+curve = SubResource("Curve2D_w7diu")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="AlienPaths/Path2D"]
+position = Vector2(18637, 3870)
+rotates = false
+loop = false
+
+[node name="AlienPrey" parent="AlienPaths/Path2D/PathFollow2D" instance=ExtResource("8_tt302")]
+rotation = 0.0053218384
+scale = Vector2(1.0000001, 1.0000001)
+idle_time = 1.2
+
+[node name="Path2D3" type="Path2D" parent="AlienPaths"]
+curve = SubResource("Curve2D_3fudu")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="AlienPaths/Path2D3"]
+position = Vector2(23948, 3794)
+rotates = false
+loop = false
+
+[node name="AlienPrey" parent="AlienPaths/Path2D3/PathFollow2D" instance=ExtResource("8_tt302")]
+position = Vector2(148, 0)
+idle_time = 4.0
+
+[node name="PathFollow2D2" type="PathFollow2D" parent="AlienPaths/Path2D3"]
+position = Vector2(23948, 3794)
+rotates = false
+loop = false
+
+[node name="AlienPrey" parent="AlienPaths/Path2D3/PathFollow2D2" instance=ExtResource("8_tt302")]
+position = Vector2(0, -50)
+idle_time = 7.0
+stop_stations = Array[float]([0.0, 1.0, 0.2, 0.8])
+
+[node name="PathFollow2D3" type="PathFollow2D" parent="AlienPaths/Path2D3"]
+position = Vector2(23948, 3794)
+rotates = false
+loop = false
+
+[node name="AlienPrey" parent="AlienPaths/Path2D3/PathFollow2D3" instance=ExtResource("8_tt302")]
+position = Vector2(41, 73)
+speed = 250.0
+idle_time = 2.0
+stop_stations = Array[float]([0.0, 1.0, 0.5, 0.6, 0.1])
+
+[node name="Path2D4" type="Path2D" parent="AlienPaths"]
+curve = SubResource("Curve2D_t04p3")
+
+[node name="AlienPredator" parent="AlienPaths/Path2D4" instance=ExtResource("11_w7diu")]
+position = Vector2(35987, 3840)
+
+[node name="PathFollow2D" type="PathFollow2D" parent="AlienPaths/Path2D4"]
+position = Vector2(37966, 4122)
+rotates = false
+loop = false
+
+[node name="AlienPredator" parent="AlienPaths/Path2D4/PathFollow2D" instance=ExtResource("11_w7diu")]
+stop_stations = Array[float]([0.0, 1.0, 0.6])
+
+[node name="ParallaxLayerForeGround" type="Parallax2D" parent="."]
+visible = false
+scale = Vector2(2, 2)
+scroll_scale = Vector2(1.2, 1)
+repeat_size = Vector2(8000, 0)
+repeat_times = 2
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxLayerForeGround"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_tt302")

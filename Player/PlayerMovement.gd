@@ -4,29 +4,41 @@ extends Area2D
 @export var path_follow: PathFollow2D = null
 
 @onready var lifeform_type = $PlayerForm
-@onready var camera: Camera2D = $Camera2D
 @onready var Mask: Node2D = $Mask
 @export var current_lifeform_data: LifeForm
 
+enum State {DEFAULT, HIDDEN, IMMITATING}
+var current_state = State.DEFAULT
 var original_texture: Texture2D
 var original_scale: Vector2
 
 var is_performing_action := false
 
+func _ready():
+	if path_follow:
+		path_follow.rotates = false
+		path_follow.loop = false
+	else:
+		print("No Path Follow Assigned to player!")
+
 func set_path_follow(pf: PathFollow2D):
 	path_follow = pf
 	
 func lock_input():
-	is_performing_action = true
+	is_performing_action = false
 	
 func unlock_input():
-	is_performing_action = false
+	print("called")
+	is_performing_action = true
 
 func _process(delta):
 	if path_follow == null:
 		return
 		
 	if is_performing_action:
+		return
+	
+	if current_state == State.HIDDEN:
 		return
 	# 1. Check for Alarm first
 	if Input.is_action_just_pressed("alarm"):
@@ -64,10 +76,16 @@ func set_lifeform_data(lifeform_data: LifeForm):
 	current_lifeform_data = lifeform_data
 
 func hide_player():
-	print("hiding player")
+	if current_state != State.HIDDEN:
+		current_state = State.HIDDEN
+		
+	else:
+		current_state = State.DEFAULT
+		
 	is_performing_action = not is_performing_action
 	monitorable = not monitorable
 	visible = not visible
+
 
 	
 	

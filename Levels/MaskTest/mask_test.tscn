@@ -1,11 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://eyrv3jvw153w"]
+[gd_scene load_steps=11 format=3 uid="uid://eyrv3jvw153w"]
 
 [ext_resource type="Texture2D" uid="uid://cwwqbhigw3s6w" path="res://Art/Background.png" id="1_nihca"]
 [ext_resource type="Texture2D" uid="uid://4mda3mehcubd" path="res://Art/Ground.png" id="2_slmhy"]
 [ext_resource type="PackedScene" uid="uid://cp7uwqqdciu45" path="res://Player/player.tscn" id="3_jr7n8"]
 [ext_resource type="PackedScene" uid="uid://1kdnurktfh6i" path="res://UtilityPrefab/MaskFuel/mask_fuel.tscn" id="5_jr7n8"]
+[ext_resource type="PackedScene" uid="uid://c1rbx0e4d5iac" path="res://LivingThings/Animals/alien_predator.tscn" id="6_m0pcj"]
 [ext_resource type="PackedScene" uid="uid://ct2woa2cbfgm3" path="res://UtilityPrefab/HidingBush/hiding_bush.tscn" id="7_mvobm"]
-[ext_resource type="PackedScene" uid="uid://b5dykyrblsnr2" path="res://LivingThings/Animals/alien_prey.tscn" id="8_fpixt"]
+[ext_resource type="Script" uid="uid://ckbjkfiglfkb1" path="res://Scripts/camera.gd" id="8_hlffk"]
 [ext_resource type="PackedScene" uid="uid://bdpgbcfhdvg32" path="res://UtilityPrefab/PauseMenu/pause_menu.tscn" id="8_m0pcj"]
 
 [sub_resource type="Curve2D" id="Curve2D_84vcm"]
@@ -76,10 +77,6 @@ loop = false
 speed = 800.0
 path_follow = NodePath("..")
 
-[node name="Camera2D" type="Camera2D" parent="Paths/Path2D/PlayerPath/Player"]
-offset = Vector2(0, -750)
-zoom = Vector2(0.4, 0.4)
-
 [node name="Path2D2" type="Path2D" parent="Paths"]
 curve = SubResource("Curve2D_mvobm")
 
@@ -87,7 +84,11 @@ curve = SubResource("Curve2D_mvobm")
 position = Vector2(1621, 4785)
 rotation = 0.00490593
 
-[node name="AlienPrey" parent="Paths/Path2D2/PathFollow2D" instance=ExtResource("8_fpixt")]
-rotation = -0.00490593
+[node name="AlienPredator" parent="Paths/Path2D2/PathFollow2D" instance=ExtResource("6_m0pcj")]
 
 [node name="PauseMenu" parent="." instance=ExtResource("8_m0pcj")]
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+limit_bottom = 5000
+script = ExtResource("8_hlffk")
+target = NodePath("../Paths/Path2D/PlayerPath/Player")
