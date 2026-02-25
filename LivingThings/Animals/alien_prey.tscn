@@ -29,5 +29,4 @@ position = Vector2(1502, -169)
 energy = 0.4
 texture = ExtResource("4_c3hhp")
 
-[connection signal="area_entered" from="DetectableArea" to="." method="on_area_entered_fov"]
 [connection signal="area_exited" from="DetectableArea" to="." method="on_area_exited_fov"]

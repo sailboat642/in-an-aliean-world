@@ -15,3 +15,6 @@ func _on_play_pressed() -> void:
 func _on_controls_pressed() -> void:
 	SceneManager.switch_scene("res://Levels/controls.tscn")
 	pass
+	
+func _on_quit_pressed() -> void:
+	get_tree().quit()

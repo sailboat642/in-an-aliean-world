@@ -22,6 +22,7 @@ var current_station_idx: int = 0
 signal action_performed(alien_type: LifeForm.Species, action: LifeForm.Action)
 
 func _ready() -> void:
+	detectable_area.area_entered.connect(on_area_entered_fov)
 	if not path_follow:
 		print("Npc does not have path follow parent")
 		return

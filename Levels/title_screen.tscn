@@ -72,3 +72,4 @@ position = Vector2(920, 665)
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_quit_pressed"]

@@ -8,18 +8,18 @@
 size = Vector2(454, 400)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1lddo"]
-radius = 1066.1201
+radius = 1011.0317
 
 [sub_resource type="Gradient" id="Gradient_1lddo"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_vff5s"]
 gradient = SubResource("Gradient_1lddo")
-width = 3000
-height = 3000
+width = 2000
+height = 2000
 fill = 1
-fill_from = Vector2(0.47435898, 0.52136755)
-fill_to = Vector2(0.8226496, 0.35042736)
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
 
 [node name="SquareAlien" type="Area2D" groups=["aliens"]]
 script = ExtResource("1_cs015")

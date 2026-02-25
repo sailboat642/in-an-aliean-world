@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://r2pdafs1nid7"]
+[gd_scene load_steps=8 format=3 uid="uid://r2pdafs1nid7"]
 
 [ext_resource type="Script" uid="uid://cocw0knfbh0jt" path="res://LivingThings/alien_ai.gd" id="1_mvdrf"]
 [ext_resource type="Resource" uid="uid://7uwtlnrhosjk" path="res://LivingThings/Tribals/circlealien_form.tres" id="2_sm8l3"]
@@ -6,6 +6,20 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mvdrf"]
 size = Vector2(450, 433)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mvdrf"]
+radius = 966.5635
+
+[sub_resource type="Gradient" id="Gradient_mvdrf"]
+colors = PackedColorArray(0.70796657, 0.7079665, 0.7079665, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sm8l3"]
+gradient = SubResource("Gradient_mvdrf")
+width = 2000
+height = 2000
+fill = 1
+fill_from = Vector2(0.50427353, 0.5)
+fill_to = Vector2(0.06837607, 0.5641026)
 
 [node name="CircleAlien" type="Area2D" groups=["aliens"]]
 script = ExtResource("1_mvdrf")
@@ -16,3 +30,14 @@ lifeform_data = ExtResource("2_sm8l3")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(13, -218)
 shape = SubResource("RectangleShape2D_mvdrf")
+
+[node name="DetectableArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectableArea"]
+position = Vector2(0, -241)
+shape = SubResource("CircleShape2D_mvdrf")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -236)
+energy = 0.43
+texture = SubResource("GradientTexture2D_sm8l3")

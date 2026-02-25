@@ -15,6 +15,12 @@ var is_performing_action := false
 
 func set_path_follow(pf: PathFollow2D):
 	path_follow = pf
+	
+func lock_input():
+	is_performing_action = true
+	
+func unlock_input():
+	is_performing_action = false
 
 func _process(delta):
 	if path_follow == null:
