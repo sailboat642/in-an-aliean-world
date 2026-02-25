@@ -191,7 +191,7 @@ func handle_player_loss():
 
 func on_area_exited_fov(area):
 	if area.is_in_group("aliens"):
-		print("lifeform lost")
+		pass
 	if area.is_in_group("player"):
-		print("player lost")
+		pass
 	pass

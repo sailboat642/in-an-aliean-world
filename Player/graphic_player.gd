@@ -7,15 +7,12 @@ func _ready() -> void:
 	
 # tell if it is moving up or down the
 func walk() -> void:
-	$AnimationPlayer.reset_section()
 	$AnimationPlayer.play("walk")
 	
 func idle() -> void:
-	$AnimationPlayer.reset_section()
 	$AnimationPlayer.play("idle")
 	
 func alarm() -> void:
-	$AnimationPlayer.reset_section()
 	$AnimationPlayer.play("alarm")
 
 func get_animation_player() -> AnimationPlayer:

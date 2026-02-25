@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1rbx0e4d5iac"]
+[gd_scene load_steps=6 format=3 uid="uid://c1rbx0e4d5iac"]
 
 [ext_resource type="Script" uid="uid://cocw0knfbh0jt" path="res://LivingThings/alien_ai.gd" id="1_hraud"]
 [ext_resource type="PackedScene" uid="uid://cytlh5auuh1k0" path="res://LivingThings/Animals/alienpredator_behaviour.tscn" id="1_xoitl"]
 [ext_resource type="Resource" uid="uid://cw3hu6qeptkmw" path="res://LivingThings/Animals/alienpredator_form.tres" id="2_u3c1i"]
+[ext_resource type="Texture2D" uid="uid://bkap25m5mxgjo" path="res://Art/LightLong.png" id="4_b4spr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u3c1i"]
 size = Vector2(556, 440)
@@ -21,3 +22,7 @@ shape = SubResource("RectangleShape2D_u3c1i")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DetectableArea"]
 polygon = PackedVector2Array(-250, -1, -251, -432, 300, -432, 3974, -830, 3960, 424, 301, -4)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(2343, -216)
+texture = ExtResource("4_b4spr")

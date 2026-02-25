@@ -6,15 +6,16 @@ func  _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Check if the action was JUST pressed (not held or released)
-	if event.is_action_pressed("ui_cancel"):
+	if event.is_action_pressed("pause"):
 		TogglePause()
 		# This tells Godot "I'm done with this event, don't pass it to anyone else"
 		get_viewport().set_input_as_handled()
 		
 func TogglePause():
-	print("toggle pause")
 	get_tree().paused = not get_tree().paused
 	visible = get_tree().paused
+	if visible:
+		$Control/VBoxContainer/Resume.grab_focus()
 
 func _on_restart_pressed() -> void:
 	get_tree().paused = false 

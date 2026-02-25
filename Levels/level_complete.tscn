@@ -39,20 +39,31 @@ stretch_mode = 2
 flip_v = true
 
 [node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 715.0
-offset_top = 85.0
-offset_right = 1294.0
-offset_bottom = 184.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -289.0
+offset_top = 180.0
+offset_right = 290.0
+offset_bottom = 279.0
+grow_horizontal = 2
 text = "Level Completed"
 label_settings = SubResource("LabelSettings_pw5hc")
 
 [node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 896.0
-offset_top = 391.0
-offset_right = 1142.0
-offset_bottom = 449.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -123.0
+offset_top = -29.0
+offset_right = 123.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Back to Menu"
 
 [connection signal="pressed" from="Button" to="." method="_on_home_pressed"]

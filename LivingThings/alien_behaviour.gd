@@ -12,6 +12,7 @@ func idle() -> void:
 	play_safe("idle")
 	
 func alarm() -> void:
+	print("play alarm")
 	play_safe("alarm")
 
 # Inside alien_behaviour.gd
