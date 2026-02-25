@@ -49,6 +49,15 @@ func hide_player():
 	can_move = not can_move
 	monitorable = not monitorable
 	visible = not visible
+	AudioManager.play_random(
+		[
+			"sfx_hide_01",
+			"sfx_hide_02"
+		],
+		-2.0,
+		Vector2(0.93, 1.07),
+		Vector2.ZERO
+	)
 
 	
 	

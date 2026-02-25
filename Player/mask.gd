@@ -74,7 +74,12 @@ func load_lifeform(lifeform_data: LifeForm) -> void:
 	
 	# Optional: Match the name so $PlayerForm calls don't break elsewhere
 	new_form.name = "PlayerForm"
-	
+	AudioManager.play_sfx(
+		"sfx_transform",
+		-0.0,
+		Vector2(0.93, 1.07),
+		Vector2.ZERO
+	)
 	print("Transformed into new lifeform!")
 
 

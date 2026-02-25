@@ -3,5 +3,5 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	AudioManager.play_music("mx_tutorial")
+	AudioManager.play_music("mx_tutorial",-3.0)
 	

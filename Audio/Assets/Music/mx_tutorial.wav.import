@@ -2,7 +2,7 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://ca8ytl4ajj0f6"
+uid="uid://cmyegbjaxch1i"
 path="res://.godot/imported/mx_tutorial.wav-ffc7eefc3c6a4060645085697c8bfe45.sample"
 
 [deps]
@@ -18,7 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop_mode=0
+edit/loop_mode=2
 edit/loop_begin=0
 edit/loop_end=-1
 compress/mode=2

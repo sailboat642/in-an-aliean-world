@@ -1,0 +1,8 @@
+res://Audio/Scripts/audio_manager.gd
+res://LivingThings/Animals/alienpredator_behaviour.tscn
+res://LivingThings/Tribals/alien_behaviour.gd
+res://Player/player_graphics.tscn
+res://Player/graphic_player.gd
+res://Player/PlayerMovement.gd
+res://Player/mask.gd
+res://Levels/StartScene/start_scene.gd
