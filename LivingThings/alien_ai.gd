@@ -19,7 +19,7 @@ var moving_forward: bool = true
 var is_waiting: bool = false
 var current_station_idx: int = 0
 
-signal action_performed(alien_type: LifeForm.Species, action: LifeForm.Action)
+signal action_performed(character: Node2D, action: LifeForm.Action)
 
 func _ready() -> void:
 	detectable_area.area_entered.connect(on_area_entered_fov)
@@ -181,8 +181,10 @@ func _process_chase(delta: float) -> void:
 	
 	# Check for 'Lose' condition (Simple distance check or use a hit Area2D)
 	if global_position.distance_to(target_node.global_position) < 150.0:
-		
-		handle_player_loss()
+		if (target_node.is_in_group("player")):
+			handle_player_loss()
+		else:
+			print("caught prey")
 
 func handle_player_loss():
 	current_state = State.DEAD

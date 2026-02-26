@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://ft83caffvdpn"]
+[gd_scene load_steps=4 format=3 uid="uid://ft83caffvdpn"]
 
 [ext_resource type="Script" uid="uid://dy2wolbh732y4" path="res://Levels/title.gd" id="1_vn2h1"]
-[ext_resource type="PackedScene" uid="uid://18u6x2vg1ue5" path="res://Levels/StartScene/walk.tscn" id="2_vn2h1"]
 [ext_resource type="PackedScene" uid="uid://r2pdafs1nid7" path="res://LivingThings/Tribals/circle_alien.tscn" id="3_vn2h1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_i1ewc"]
@@ -17,7 +16,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vn2h1")
-level_one = ExtResource("2_vn2h1")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

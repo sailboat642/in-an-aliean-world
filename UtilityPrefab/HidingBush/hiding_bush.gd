@@ -34,6 +34,6 @@ func toggle_hide(player):
 	if is_hiding:
 		camera.zoom_in(Vector2(0.2, 0.2))
 	else:
-		camera.zoom_in(Vector2(0.4, 0.4))
+		camera.zoom_in(Vector2(0.3, 0.3))
 	anim_player.play("default")
 	player.hide_player()

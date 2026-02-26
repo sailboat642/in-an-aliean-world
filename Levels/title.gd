@@ -1,6 +1,6 @@
 extends Control
 
-@export var level_one: PackedScene
+@export_file("*.tscn") var level_one: String = "res://Levels/LandingScene/landing_site.tscn"
 
 func _ready() -> void:
 	var stream = AudioManager.play_music("mx_menu")
@@ -9,7 +9,7 @@ func _ready() -> void:
 
 
 func _on_play_pressed() -> void:
-	SceneManager.switch_scene("res://Levels/StartScene/walk.tscn")
+	SceneManager.switch_scene(level_one)
 	
 
 func _on_controls_pressed() -> void:
