@@ -76,15 +76,21 @@ func set_lifeform_data(lifeform_data: LifeForm):
 	current_lifeform_data = lifeform_data
 
 func hide_player():
+	
 	if current_state != State.HIDDEN:
 		current_state = State.HIDDEN
-		
 	else:
 		current_state = State.DEFAULT
-		
+	
+	
 	is_performing_action = not is_performing_action
 	monitorable = not monitorable
 	visible = not visible
+	
+	if current_state == State.DEFAULT:
+		await get_tree().physics_frame
+		for area in get_overlapping_areas():
+			area.emit_signal("area_entered", self)
 
 
 	

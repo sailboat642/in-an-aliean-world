@@ -85,6 +85,7 @@ position = Vector2(1621, 4785)
 rotation = 0.00490593
 
 [node name="AlienPredator" parent="Paths/Path2D2/PathFollow2D" instance=ExtResource("6_m0pcj")]
+idle_time = 2.0
 
 [node name="PauseMenu" parent="." instance=ExtResource("8_m0pcj")]
 

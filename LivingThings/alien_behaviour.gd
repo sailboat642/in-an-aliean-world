@@ -26,6 +26,3 @@ func get_animation_player() -> AnimationPlayer:
 	
 func play_fs(sound_name: String) -> void:
 	AudioManager.play_sfx(sound_name)
-	
-#func play_fs(sound_name: String) -> void:
-	#AudioManager.play_sfx(sound_name)

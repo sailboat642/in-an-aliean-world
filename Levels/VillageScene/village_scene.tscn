@@ -1,5 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://d00sr084w0e34"]
+[gd_scene load_steps=19 format=3 uid="uid://d00sr084w0e34"]
 
+[ext_resource type="PackedScene" uid="uid://bdpgbcfhdvg32" path="res://UtilityPrefab/PauseMenu/pause_menu.tscn" id="1_3jwb4"]
 [ext_resource type="Texture2D" uid="uid://brxv0uvowkbju" path="res://Art/ForrestEnvironment-1.png" id="1_ykkkp"]
 [ext_resource type="Texture2D" uid="uid://cteox7cg6dnfa" path="res://Art/ForrestEnvironment-2.png" id="2_bjdio"]
 [ext_resource type="Texture2D" uid="uid://dm2idksxmneui" path="res://Art/ForrestEnvironment-3.png" id="3_7xppw"]
@@ -46,6 +47,8 @@ point_count = 2
 
 [node name="VillageScene" type="Node2D"]
 
+[node name="PauseMenu" parent="." instance=ExtResource("1_3jwb4")]
+
 [node name="BackgroundLayer" type="Parallax2D" parent="."]
 scale = Vector2(2, 2)
 repeat_size = Vector2(3840, 0)
@@ -78,6 +81,11 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("2_bjdio")
 
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(24155, 2032)
+scale = Vector2(2, 2)
+texture = ExtResource("3_7xppw")
+
 [node name="GroundLayer" type="Parallax2D" parent="."]
 scroll_offset = Vector2(0, 2059)
 repeat_size = Vector2(3480, 0)
@@ -90,11 +98,6 @@ texture = ExtResource("3_iob50")
 
 [node name="Village" type="Node2D" parent="."]
 position = Vector2(4070, 0)
-
-[node name="Sprite2D3" type="Sprite2D" parent="Village"]
-position = Vector2(20085, 2032)
-scale = Vector2(2, 2)
-texture = ExtResource("3_7xppw")
 
 [node name="Sprite2D" type="Sprite2D" parent="Village"]
 position = Vector2(16210.999, 3381)

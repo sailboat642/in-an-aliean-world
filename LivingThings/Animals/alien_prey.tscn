@@ -22,10 +22,10 @@ shape = SubResource("RectangleShape2D_d5q0u")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DetectableArea"]
 position = Vector2(976.5143, -115.997765)
-polygon = PackedVector2Array(-773.5143, 110.997765, 965.4857, 460.99777, 951.4857, -424.00223, -777.5143, -144.00223, -1129.5144, -151.00223, -1134.5144, 112.997765)
+polygon = PackedVector2Array(-773.5143, 110.997765, 965.4857, 460.99777, 972.4857, -429.00223, -777.5143, -144.00223, -1129.5144, -151.00223, -1134.5144, 112.997765)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(1502, -169)
+position = Vector2(1502, -198)
 energy = 0.6
 texture = ExtResource("4_c3hhp")
 

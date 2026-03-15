@@ -19,7 +19,7 @@ var moving_forward: bool = true
 var is_waiting: bool = false
 var current_station_idx: int = 0
 
-signal action_performed(character: Node2D, action: LifeForm.Action)
+signal action_performed(character: Node2D, species: LifeForm.Species, action: LifeForm.Action)
 
 func _ready() -> void:
 	detectable_area.area_entered.connect(on_area_entered_fov)
@@ -123,11 +123,13 @@ func on_area_entered_fov(area):
 
 func react(character, species: LifeForm.Species, action: LifeForm.Action):
 	if lifeform_data.flee_conditions.has(species):
+		emit_signal("action_performed", character, species, action)
 		if lifeform_data.flee_conditions[species] == action:
 			flee(character)
 			return
 	
 	elif lifeform_data.chase_conditions.has(species):
+		emit_signal("action_performed", character, species, action)
 		if lifeform_data.chase_conditions[species] == action:
 			chase(character)
 			return
@@ -137,14 +139,12 @@ func flee(antagonizer: Node2D) -> void:
 	if current_state == State.FLEE: return
 	
 	target_node = antagonizer
-	print("alarmed")
 	current_state = State.DEAD
 	behaviour.alarm() 
 	await behaviour.get_animation_player().animation_finished
 	# Emit signal with name for the UI/Log
 	# behaviour.action_performed.emit(LifeForm.Action.ALARM, lifeform_data.form_name)
 	current_state = State.FLEE
-	print("running away")
 	# Wait 6 seconds, then vanish
 	await get_tree().create_timer(6.0).timeout
 	queue_free()
@@ -160,6 +160,7 @@ func _process_flee(delta: float) -> void:
 	scale.x = abs(scale.x) if dir.x > 0 else -abs(scale.x)
 
 func chase(target: Node2D) -> void:
+	if current_state == State.CHASE: return
 	target_node = target
 	
 	behaviour.alarm()
