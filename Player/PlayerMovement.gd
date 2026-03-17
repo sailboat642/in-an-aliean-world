@@ -92,6 +92,15 @@ func hide_player():
 		for area in get_overlapping_areas():
 			area.emit_signal("area_entered", self)
 
+	AudioManager.play_random(
+		[
+			"sfx_hide_01",
+			"sfx_hide_02"
+		],
+		-2.0,
+		Vector2(0.93, 1.07),
+		Vector2.ZERO
+	)
 
 	
 	

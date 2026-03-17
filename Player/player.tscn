@@ -23,5 +23,5 @@ shape = SubResource("CapsuleShape2D_btcbx")
 position = Vector2(15, 0)
 
 [node name="Mask" parent="." instance=ExtResource("4_gwnis")]
-position = Vector2(20, -351)
+position = Vector2(150, -111)
 player_lifeform_data = ExtResource("2_fhl08")

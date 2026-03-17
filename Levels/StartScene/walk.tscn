@@ -202,8 +202,6 @@ position = Vector2(6035, 11498)
 
 [node name="GraphicsFront" type="Node2D" parent="."]
 
-[node name="PauseMenu" parent="." instance=ExtResource("14_ionnw")]
-
 [node name="Gates" type="Node2D" parent="."]
 
 [node name="MaskFuel" parent="." instance=ExtResource("14_ygvuh")]
