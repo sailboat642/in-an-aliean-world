@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://18u6x2vg1ue5"]
+[gd_scene load_steps=19 format=3 uid="uid://18u6x2vg1ue5"]
 
 [ext_resource type="Script" uid="uid://n1ywwghroli5" path="res://Levels/StartScene/start_scene.gd" id="1_ionnw"]
 [ext_resource type="PackedScene" uid="uid://cp7uwqqdciu45" path="res://Player/player.tscn" id="2_qycdm"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://b5dykyrblsnr2" path="res://LivingThings/Animals/alien_prey.tscn" id="13_ionnw"]
 [ext_resource type="PackedScene" uid="uid://bckm3b1ax1mx2" path="res://UtilityPrefab/PathSwitchGate/portal.tscn" id="13_m2t54"]
 [ext_resource type="PackedScene" uid="uid://bfh8027b41fe1" path="res://UtilityPrefab/PureEnergy/pure_energy.tscn" id="13_o0j25"]
-[ext_resource type="PackedScene" uid="uid://bdpgbcfhdvg32" path="res://UtilityPrefab/PauseMenu/pause_menu.tscn" id="14_ionnw"]
 [ext_resource type="PackedScene" uid="uid://1kdnurktfh6i" path="res://UtilityPrefab/MaskFuel/mask_fuel.tscn" id="14_ygvuh"]
 
 [sub_resource type="Curve2D" id="Curve2D_epvrj"]
@@ -200,8 +199,6 @@ rotation = 3.116645
 position = Vector2(6035, 11498)
 
 [node name="GraphicsFront" type="Node2D" parent="."]
-
-[node name="PauseMenu" parent="." instance=ExtResource("14_ionnw")]
 
 [node name="Gates" type="Node2D" parent="."]
 
